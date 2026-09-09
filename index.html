@@ -1,70 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GameZone - Editable</title>
+<title>GameZone Corrientes</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial} body{background:#050a1e;color:white}
-header{padding:15px;text-align:center;background:#0c1535;position:sticky;top:0}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial}
+body{background:#050a1e;color:white}
+header{padding:15px;text-align:center;background:#0c1535;position:sticky;top:0;z-index:10}
+header h1{font-size:26px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;padding:12px;max-width:1100px;margin:auto}
 .card{background:#121f44;border-radius:12px;overflow:hidden;border:1px solid #24357a}
-.card img{width:100%;height:210px;object-fit:cover;background:#0a1430}
-.card-body{padding:8px}.price{color:#6aff9a;font-weight:800}
+.card img{width:100%;height:220px;object-fit:cover;background:#0a1430;display:block}
+.card-body{padding:8px}
+.card h3{font-size:13px;min-height:32px}
+.price{color:#6aff9a;font-weight:800;margin:4px 0}
 .btn{display:block;text-align:center;padding:8px;border-radius:8px;text-decoration:none;font-weight:800;margin-top:5px}
-.ver{background:#2a5cff;color:white}.wa{background:#25D366;color:black}
-#modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:99;padding:10px}
+.ver{background:#2a5cff;color:white;cursor:pointer}
+.wa{background:#25D366;color:black}
+#modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:99;padding:10px;overflow:auto}
 .box{max-width:600px;margin:20px auto;background:#0c1535;border-radius:12px;padding:12px}
-.box img{width:100%;height:300px;object-fit:cover;border-radius:8px}
+.box img{width:100%;height:320px;object-fit:cover;border-radius:8px}
 </style>
 </head>
 <body>
-<header><h1>🎮 GameZone Corrientes</h1><p>3795-118415 | Tocá el juego para ver video</p></header>
+<header><h1>🎮 GameZone Corrientes</h1><p>WhatsApp 3795-118415 | Tocá para ver video</p></header>
 <div class="grid" id="grid"></div>
 
 <div id="modal" onclick="if(event.target==this)cerrar()"><div class="box">
-<img id="mImg"><h2 id="mTit"></h2><p id="mDesc"></p>
-<iframe id="mVid" style="width:100%;height:200px;border:0;border-radius:8px;margin-top:8px" allowfullscreen></iframe>
-<a id="mWa" class="btn wa" target="_blank" style="margin-top:10px;padding:12px">Consultar por WhatsApp</a>
-<button onclick="cerrar()" style="width:100%;margin-top:6px;padding:8px;background:#1a254d;color:white;border:0;border-radius:8px">Cerrar</button>
+<img id="mImg"><h2 id="mTit" style="margin:8px 0"></h2><p id="mDesc"></p>
+<iframe id="mVid" style="width:100%;height:210px;border:0;border-radius:8px;margin-top:8px;background:#000" allowfullscreen></iframe>
+<a id="mWa" class="btn wa" target="_blank" style="margin-top:10px;padding:12px;font-size:18px">🟢 Consultar por WhatsApp</a>
+<button onclick="cerrar()" style="width:100%;margin-top:6px;padding:10px;background:#1a254d;color:white;border:0;border-radius:10px">Cerrar</button>
 </div></div>
 
 <script>
-// =======================
-// ACA EDITAS VOS - SOLO ESTO
-// Para agregar un juego, copiá y pegá un bloque { } y cambiá los datos
-// foto: subí tu foto a postimages.org y pegá el link directo
-// =======================
 const JUEGOS = [
   {
     titulo: "GTA San Andreas - PS2",
     precio: "$1.200",
-    foto: https://i.postimg.cc/zfpsmzqk/grand-theft-auto-gta-san-andreas-sony-playstation-2-ps2-710425274107-cover-art.jpg
-    descripcion: "El clásico de PS2. Mundo abierto, 100hs de juego.",
-    youtubeID: "yOzcbtsMv50" // lo que está después de v= en youtube
+    foto: "https://i.postimg.cc/zfpsmzqk/grand-theft-auto-gta-san-andreas-sony-playstation-2-ps2-710425274107-cover-art.jpg",
+    descripcion: "El clasico de PS2, mundo abierto total. Historia de CJ en Los Santos. 1 jugador, 100hs.",
+    youtubeID: "yOzcbtsMv50"
   },
   {
-    titulo: "God of War 2 - PS2",
+    titulo: "God of War II - PS2",
     precio: "$2.500",
     foto: "https://upload.wikimedia.org/wikipedia/en/8/84/God_of_War_II_cover.jpg",
-    descripcion: "Kratos vs los Dioses. El mejor de PS2.",
+    descripcion: "Kratos vs Zeus. El mejor hack and slash de PS2.",
     youtubeID: "d34oC7oZqQE"
   },
   {
-    titulo: "ACA PONE TU JUEGO",
-    precio: "$PONER PRECIO",
-    foto: "PEGAR LINK DE TU FOTO ACA",
-    descripcion: "Escribí 1 frase del juego",
-    youtubeID: "ID_DE_YOUTUBE"
+    titulo: "Shadow of the Colossus - PS2",
+    precio: "$2.200",
+    foto: "https://upload.wikimedia.org/wikipedia/en/9/9f/Shadow_of_the_Colossus.jpg",
+    descripcion: "Vos, tu caballo Agro y 16 colosos gigantes. Obra maestra.",
+    youtubeID: "pdZQ98AHz1g"
   }
 ];
-// =======================
-// FIN DE LO QUE EDITAS
-// =======================
 
 const grid=document.getElementById('grid');
 JUEGOS.forEach((j,i)=>{
-  grid.innerHTML+=`<div class="card"><img src="${j.foto}"><div class="card-body"><h3 style="font-size:13px;min-height:30px">${j.titulo}</h3><div class="price">${j.precio}</div><a class="btn ver" onclick="ver(${i})">Ver + Video</a><a class="btn wa" href="https://wa.me/5493795118415?text=Hola! Quiero ${encodeURIComponent(j.titulo)}" target="_blank">WhatsApp</a></div></div>`
+  grid.innerHTML+=`<div class="card"><img src="${j.foto}"><div class="card-body"><h3>${j.titulo}</h3><div class="price">${j.precio}</div><a class="btn ver" onclick="ver(${i})">👁️ Ver + Video</a><a class="btn wa" href="https://wa.me/5493795118415?text=Hola%20GameZone!%20Quiero%20${encodeURIComponent(j.titulo)}%20${encodeURIComponent(j.precio)}" target="_blank">WhatsApp</a></div></div>`
 });
-function ver(i){let j=JUEGOS[i]; document.getElementById('mImg').src=j.foto; document.getElementById('mTit').innerText=j.titulo+" "+j.precio; document.getElementById('mDesc').innerText=j.descripcion; document.getElementById('mVid').src="https://www.youtube.com/embed/"+j.youtubeID; document.getElementById('mWa').href="https://wa.me/5493795118415?text=Hola GameZone! Quiero "+encodeURIComponent(j.titulo); document.getElementById('modal').style.display="block";}
+function ver(i){let j=JUEGOS[i]; document.getElementById('mImg').src=j.foto; document.getElementById('mTit').innerText=j.titulo+" "+j.precio; document.getElementById('mDesc').innerText=j.descripcion; document.getElementById('mVid').src="https://www.youtube.com/embed/"+j.youtubeID; document.getElementById('mWa').href="https://wa.me/5493795118415?text=Hola%20GameZone!%20Quiero%20consultar%20por%20"+encodeURIComponent(j.titulo+" "+j.precio); document.getElementById('modal').style.display="block";}
 function cerrar(){document.getElementById('modal').style.display="none";document.getElementById('mVid').src=""}
 </script>
 </body>
