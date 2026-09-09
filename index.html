@@ -1,67 +1,51 @@
 <!DOCTYPE html>
 <html lang="es">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>GameZone Corrientes</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#050a1e;color:#fff}
-header{background:#0c1535;padding:12px;text-align:center;border-bottom:3px solid #2a5cff}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:10px;max-width:800px;margin:auto}
-.card{background:#121f44;border-radius:12px;overflow:hidden;border:1px solid #24357a}
-.card img{width:100%;height:190px;object-fit:cover;background:#000}
-.card-body{padding:8px}
-.price{color:#6aff9a;font-weight:800}
-.btn{display:block;text-align:center;padding:9px;border-radius:8px;text-decoration:none;font-weight:800;margin-top:6px;font-size:13px}
-.ver{background:#2a5cff;color:#fff;cursor:pointer}
+body{margin:0;background:#070f2b;color:#fff;font-family:Arial;text-align:center}
+header{background:#0c1535;padding:15px;border-bottom:3px solid #2a5cff}
+.card{max-width:360px;margin:15px auto;background:#121f44;border-radius:14px;overflow:hidden;border:1px solid #2a3d8a}
+.card img{width:100%;display:block}
+.info{padding:12px;text-align:left}
+.price{color:#6aff9a;font-weight:900;font-size:20px;margin:6px 0}
+.desc{color:#cbd5ff;font-size:14px;white-space:pre-line;line-height:1.4;background:#0a1230;padding:10px;border-radius:10px;margin:10px 0}
+.btn{display:block;padding:13px;border-radius:10px;text-decoration:none;font-weight:900;margin-top:8px;text-align:center}
 .wa{background:#25D366;color:#000}
-#modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:99;padding:12px;overflow:auto}
-.box{max-width:500px;margin:10px auto;background:#0c1535;border-radius:12px;overflow:hidden}
-.box img{width:100%;height:260px;object-fit:cover}
-.info{padding:12px}
+.yt{background:#ff0000;color:#fff}
 </style>
 </head>
 <body>
-<header><h1>🎮 GameZone Corrientes</h1><p>3795-118415 - Video fix liviano</p></header>
-<div class="grid" id="g"></div>
+<header>
+<h1>🎮 GameZone Corrientes</h1>
+<p>WhatsApp: 3795-118415</p>
+</header>
 
-<div id="modal" onclick="if(event.target==this)cerrar()"><div class="box">
-<img id="mImg"><div class="info">
-<h2 id="mTit"></h2>
-<p id="mDesc" style="color:#cbd5ff;margin:8px 0;white-space:pre-line;line-height:1.4;font-size:14px"></p>
-<div id="videoBox" style="margin-top:10px"></div>
-<a id="mWa" class="btn wa" target="_blank" style="padding:13px;margin-top:10px">🟢 WhatsApp</a>
-<button onclick="cerrar()" style="width:100%;margin-top:8px;padding:10px;background:#1a254d;color:#fff;border:0;border-radius:10px">Cerrar</button>
-</div></div></div>
-
-<script>
-const JUEGOS=[{
-t:"GTA San Andreas PS2",
-p:"$1.200",
-img:"https://images.weserv.nl/?url=i.postimg.cc/zfpsmzqk/grand-theft-auto-gta-san-andreas-sony-playstation-2-ps2-710425274107-cover-art.jpg&w=400&output=webp",
-yt:"3xu_jxcTvfo",
-desc:"🔥 GTA SAN ANDREAS - PS2 CLASICO 🔥\n\n✔ Mundo abierto: Los Santos / San Fierro / Las Venturas\n✔ 100 misiones + secundarias, gym, tunear autos\n✔ 1 jugador, 100hs de juego\n✔ Funciona en PS2 flasheada con pendrive\n✔ Entrega inmediata en Corrientes"
-}];
-
-document.getElementById("g").innerHTML=JUEGOS.map((j,i)=>`
 <div class="card">
-<img src="${j.img}" loading="lazy">
-<div class="card-body">
-<h3 style="font-size:13px">${j.t}</h3>
-<div class="price">${j.p}</div>
-<a class="btn ver" onclick="ver(${i})">👁️ Ver + Video</a>
-<a class="btn wa" href="https://wa.me/5493795118415?text=Hola quiero ${encodeURIComponent(j.t)}" target="_blank">WhatsApp</a>
-</div></div>`).join("");
+<img src="https://i.postimg.cc/zfpsmzqk/grand-theft-auto-gta-san-andreas-sony-playstation-2-ps2-710425274107-cover-art.jpg" alt="GTA SA">
+<div class="info">
+<h2>GTA San Andreas - PS2</h2>
+<div class="price">$1.200</div>
 
-function ver(i){
-let j=JUEGOS[i];
-document.getElementById('mImg').src=j.img;
-document.getElementById('mTit').innerText=j.t+" "+j.p;
-document.getElementById('mDesc').innerText=j.desc;
-document.getElementById('videoBox').innerHTML=`<iframe width="100%" height="220" src="https://www.youtube-nocookie.com/embed/${j.yt}?rel=0" frameborder="0" allowfullscreen style="border-radius:10px;background:#000"></iframe>`;
-document.getElementById('mWa').href=`https://wa.me/5493795118415?text=Hola GameZone! Quiero ${encodeURIComponent(j.t)} ${j.p}`;
-document.getElementById('modal').style.display='block';
-}
-function cerrar(){document.getElementById('modal').style.display='none';document.getElementById('videoBox').innerHTML='';}
-</script>
+<div class="desc">🔥 EL CLASICO DE PS2 🔥
+
+✔ 3 Ciudades: Los Santos, San Fierro, Las Venturas
+✔ 100 misiones + secundarias
+✔ Tunea autos, gym, casas, novias
+✔ 100 horas de juego
+✔ Anda en PS2 con pendrive / chip
+✔ Entrega inmediata Corrientes</div>
+
+<!-- VIDEO QUE ANDA EN TODOS LADOS -->
+<iframe width="100%" height="205" src="https://www.youtube.com/embed/3xu_jxcTvfo" frameborder="0" allowfullscreen style="border-radius:10px;background:#000"></iframe>
+
+<a class="btn yt" href="https://www.youtube.com/watch?v=3xu_jxcTvfo" target="_blank">▶️ Ver Gameplay en YouTube</a>
+<a class="btn wa" href="https://wa.me/5493795118415?text=Hola%20GameZone!%20Quiero%20el%20GTA%20San%20Andreas%20PS2%20$1200" target="_blank">🟢 Pedir por WhatsApp $1.200</a>
+</div>
+</div>
+
+<p style="color:#7a8ac0;font-size:12px;padding:20px">gamezone ctes - pagina 100% funcionando</p>
 </body>
 </html>
