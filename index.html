@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameZone | Catálogo de Juegos</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+font-family:Arial,sans-serif;
+background:#090b12;
+color:#fff;
+}
+header{
+background:linear-gradient(135deg,#151b3d,#25105c);
+padding:28px 18px;
+text-align:center;
+border-bottom:2px solid #6c4cff;
+}
+.logo{
+font-size:38px;
+font-weight:900;
+letter-spacing:2px;
+}
+.logo span{color:#7c5cff}
+.sub{margin-top:7px;color:#bfc3d9}
+
+.search{
+max-width:650px;
+margin:22px auto 0;
+display:flex;
+}
+.search input{
+width:100%;
+padding:16px;
+border:0;
+border-radius:14px;
+font-size:16px;
+outline:none;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:22px 15px;
+}
+
+.categories{
+display:flex;
+gap:10px;
+overflow-x:auto;
+margin-bottom:22px;
+}
+.categories button{
+border:0;
+background:#191d2b;
+color:white;
+padding:13px 20px;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer;
+white-space:nowrap;
+}
+.categories button.active,
+.categories button:hover{
+background:#6c4cff;
+}
+
+.title{
+font-size:25px;
+margin-bottom:15px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+gap:15px;
+}
+
+.card{
+background:#141824;
+border:1px solid #252b3e;
+border-radius:16px;
+overflow:hidden;
+transition:.2s;
+}
+.card:hover{
+transform:translateY(-4px);
+border-color:#6c4cff;
+}
+
+.cover{
+height:210px;
+background:linear-gradient(135deg,#252a40,#11131c);
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:15px;
+font-size:20px;
+font-weight:bold;
+}
+
+.info{padding:14px}
+.console{
+font-size:12px;
+color:#9d8cff;
+font-weight:bold;
+text-transform:uppercase;
+}
+.name{
+font-size:16px;
+font-weight:bold;
+margin:7px 0;
+}
+.price{
+font-size:20px;
+font-weight:900;
+margin:8px 0;
+}
+.btn{
+display:block;
+text-align:center;
+background:#6c4cff;
+color:white;
+text-decoration:none;
+padding:10px;
+border-radius:10px;
+font-weight:bold;
+margin-top:8px;
+}
+.btn:hover{background:#8066ff}
+
+.empty{
+text-align:center;
+padding:40px;
+color:#9da3b8;
+display:none;
+}
+
+footer{
+margin-top:40px;
+padding:25px;
+text-align:center;
+background:#11131c;
+color:#8f94a8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">🎮 Game<span>Zone</span></div>
+<div class="sub">Catálogo de juegos · PS2 · PS3 · Switch</div>
+
+<div class="search">
+<input id="search" type="text" placeholder="🔎 Buscar un juego...">
+</div>
+</header>
+
+<main class="container">
+
+<div class="categories">
+<button class="active" onclick="filtrar('todos',this)">Todos</button>
+<button onclick="filtrar('PS2',this)">🎮 PS2</button>
+<button onclick="filtrar('PS3',this)">🎮 PS3</button>
+<button onclick="filtrar('Switch',this)">🎮 Switch</button>
+</div>
+
+<h2 class="title">🔥 Juegos destacados</h2>
+
+<div class="grid" id="catalogo">
+
+<div class="card" data-console="PS2">
+<div class="cover">GTA San Andreas</div>
+<div class="info">
+<div class="console">PS2</div>
+<div class="name">GTA San Andreas</div>
+<div class="price">$0</div>
+<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
+</div>
+</div>
+
+<div class="card" data-console="PS2">
+<div class="cover">God of War II</div>
+<div class="info">
+<div class="console">PS2</div>
+<div class="name">God of War II</div>
+<div class="price">$0</div>
+<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
+</div>
+</div>
+
+<div class="card" data-console="PS2">
+<div class="cover">Resident Evil 4</div>
+<div class="info">
+<div class="console">PS2</div>
+<div class="name">Resident Evil 4</div>
+<div class="price">$0</div>
+<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
+</div>
+</div>
+
+<div class="card" data-console="PS3">
+<div class="cover">GTA V</div>
+<div class="info">
+<div class="console">PS3</div>
+<div class="name">Grand Theft Auto V</div>
+<div class="price">$0</div>
+<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
+</div>
+</div>
+
+<div class="card" data-console="PS3">
+<div class="cover">The Last of Us</div>
+<div class="info">
+<div class="console">PS3</div>
+<div class="name">The Last of Us</div>
+<div class="price">$0</div>
+<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
+</div>
+</div>
+
+<div class="card" data-console="PS3">
+<div class="cover">Red Dead Redemption</div>
+<div class="info">
+<div class="console">PS3</div>
+<div class="name">Red Dead Redemption</div>
+<div class="price">$0</div>
+<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
+</div>
+</div>
+
+<div class="card" data-console="Switch">
+<div class="cover">Mario Kart 8 Deluxe</div>
+<div class="info">
+<div class="console">Switch</div>
+<div class="name">Mario Kart 8 Deluxe</div>
+<div class="price">$0</div>
+<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
+</div>
+</div>
+
+<div class="card" data-console="Switch">
+<div class="cover">Super Mario Odyssey</div>
+<div class="info">
+<div class="console">Switch</div>
+<div class="name">Super Mario Odyssey</div>
+<div class="price">$0</div>
+<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
+</div>
+</div>
+
+<div class="card" data-console="Switch">
+<div class="cover">The Legend of Zelda</div>
+<div class="info">
+<div class="console">Switch</div>
+<div class="name">The Legend of Zelda</div>
+<div class="price">$0</div>
+<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
+</div>
+</div>
+
+</div>
+
+<div class="empty" id="empty">
+No encontramos ese juego 😕
+</div>
+
+</main>
+
+<footer>
+🎮 GameZone<br>
+Catálogo de juegos PS2 · PS3 · Switch
+</footer>
+
+<script>
+let consolaActual="todos";
+
+function filtrar(consola,boton){
+consolaActual=consola;
+
+document.querySelectorAll(".categories button")
+.forEach(b=>b.classList.remove("active"));
+
+boton.classList.add("active");
+mostrar();
+}
+
+document.getElementById("search").addEventListener("input",mostrar);
+
+function mostrar(){
+let texto=document.getElementById("search").value.toLowerCase();
+let tarjetas=document.querySelectorAll(".card");
+let encontrados=0;
+
+tarjetas.forEach(card=>{
+let nombre=card.querySelector(".name").textContent.toLowerCase();
+let consola=card.dataset.console;
+
+let coincideNombre=nombre.includes(texto);
+let coincideConsola=
+consolaActual==="todos" || consola===consolaActual;
+
+if(coincideNombre && coincideConsola){
+card.style.display="block";
+encontrados++;
+}else{
+card.style.display="none";
+}
+});
+
+document.getElementById("empty").style.display=
+encontrados===0?"block":"none";
+}
+</script>
+
+</body>
+  </html>
