@@ -1,15 +1,51 @@
 <!DOCTYPE html>
 <html lang="es">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GameZone</title>
-<style>body{background:#050a1e;color:#fff;font-family:Arial;margin:0}header{background:#0c1535;padding:15px;text-align:center} .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:10px}.card{background:#121f44;border-radius:10px;overflow:hidden}.card img{width:100%;height:200px;object-fit:cover}.card-body{padding:8px}.price{color:#6aff9a;font-weight:800}.btn{display:block;background:#25D366;color:#000;text-align:center;padding:8px;border-radius:8px;text-decoration:none;font-weight:800;margin-top:5px}</style>
+<title>GameZone Corrientes</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#050a1e;color:#fff}
+header{background:#0c1535;padding:14px;text-align:center;border-bottom:3px solid #2a5cff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:10px;padding:12px;max-width:1100px;margin:auto}
+.card{background:#121f44;border-radius:12px;overflow:hidden;border:1px solid #24357a}
+.card img{width:100%;height:215px;object-fit:cover}
+.card-body{padding:8px}
+.price{color:#6aff9a;font-weight:800;margin:4px 0}
+.btn{display:block;text-align:center;padding:9px;border-radius:8px;text-decoration:none;font-weight:800;margin-top:6px;font-size:13px;cursor:pointer}
+.ver{background:#2a5cff;color:#fff}
+.wa{background:#25D366;color:#000}
+#modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:99;padding:10px;overflow:auto}
+.box{max-width:600px;margin:20px auto;background:#0c1535;border-radius:14px;overflow:hidden}
+.box img{width:100%;height:300px;object-fit:cover}
+.info{padding:14px}
+.info iframe{width:100%;height:220px;border:0;border-radius:10px;margin-top:10px;background:#000}
+</style>
 </head>
 <body>
-<header><h1>GameZone Corrientes</h1><p>3795-118415</p></header>
-<div class="grid" id="g"></div>
+<header><h1>🎮 GameZone Corrientes</h1><p>📲 3795-118415 | Tocá VER para descripción y video</p></header>
+<div class="grid" id="grid"></div>
+
+<div id="modal" onclick="if(event.target==this)cerrar()"><div class="box"><img id="mImg"><div class="info"><h2 id="mTit"></h2><p id="mDesc" style="color:#cbd5ff;margin:8px 0;line-height:1.4"></p><iframe id="mVid" allowfullscreen></iframe><a id="mWa" class="btn wa" target="_blank" style="padding:13px;margin-top:10px;font-size:16px">🟢 Consultar por WhatsApp</a><button onclick="cerrar()" style="width:100%;margin-top:8px;padding:10px;background:#1a254d;color:#fff;border:0;border-radius:10px">Cerrar</button></div></div></div>
+
 <script>
-const J=[{t:"GTA San Andreas",p:"$1200",img:"https://i.postimg.cc/zfpsmzqk/grand-theft-auto-gta-san-andreas-sony-playstation-2-ps2-710425274107-cover-art.jpg"}];
-document.getElementById("g").innerHTML=J.map(j=>`<div class="card"><img src="${j.img}"><div class="card-body"><h3>${j.t}</h3><div class="price">${j.p}</div><a class="btn" href="https://wa.me/5493795118415?text=Quiero ${j.t}" target="_blank">WhatsApp</a></div></div>`).join("");
+const JUEGOS=[
+{
+t:"GTA San Andreas - PS2",
+p:"$1.200",
+img:"https://i.postimg.cc/zfpsmzqk/grand-theft-auto-gta-san-andreas-sony-playstation-2-ps2-710425274107-cover-art.jpg",
+yt:"yOzcbtsMv50",
+desc:"🔥 EL CLÁSICO DE PS2 🔥\n\n• Mundo abierto gigante: Los Santos, San Fierro y Las Venturas\n• Historia de CJ, 100 misiones + secundarias\n• Podés tunear autos, ir al gym, comprar casas, novias\n• 1 jugador - 100 horas de juego\n• Funciona perfecto en PS2 chip + pendrive\n• Incluye trucos y mapa"
+}
+];
+
+let html="";
+JUEGOS.forEach((j,i)=>{
+html+=`<div class="card"><img src="${j.img}"><div class="card-body"><h3 style="font-size:13px">${j.t}</h3><div class="price">${j.p}</div><a class="btn ver" onclick="ver(${i})">👁️ Ver descripción + Video</a><a class="btn wa" href="https://wa.me/5493795118415?text=Hola GameZone! Quiero ${encodeURIComponent(j.t)} ${j.p}" target="_blank">WhatsApp</a></div></div>`;
+});
+document.getElementById("grid").innerHTML=html;
+
+function ver(i){let j=JUEGOS[i];document.getElementById('mImg').src=j.img;document.getElementById('mTit').innerText=j.t+" "+j.p;document.getElementById('mDesc').innerText=j.desc;document.getElementById('mVid').src="https://www.youtube.com/embed/"+j.yt;document.getElementById('mWa').href="https://wa.me/5493795118415?text=Hola GameZone! Quiero "+encodeURIComponent(j.t+" "+j.p);document.getElementById('modal').style.display='block';}
+function cerrar(){document.getElementById('modal').style.display='none';document.getElementById('mVid').src='';}
 </script>
 </body>
 </html>
