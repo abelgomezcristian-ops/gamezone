@@ -3,319 +3,859 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>GameZone | Catálogo de Juegos</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
 body{
-font-family:Arial,sans-serif;
-background:#090b12;
-color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#070910;
+    color:white;
 }
+
+/* HEADER */
+
 header{
-background:linear-gradient(135deg,#151b3d,#25105c);
-padding:28px 18px;
-text-align:center;
-border-bottom:2px solid #6c4cff;
+    background:
+    radial-gradient(circle at top right,#4930a8 0,#1a1240 30%,transparent 60%),
+    linear-gradient(135deg,#0d1020,#17112f);
+    padding:25px 15px 30px;
+    text-align:center;
+    border-bottom:1px solid #654cff;
 }
+
 .logo{
-font-size:38px;
-font-weight:900;
-letter-spacing:2px;
+    font-size:40px;
+    font-weight:900;
+    letter-spacing:2px;
 }
-.logo span{color:#7c5cff}
-.sub{margin-top:7px;color:#bfc3d9}
+
+.logo span{
+    color:#765cff;
+}
+
+.subtitle{
+    color:#b9bdd0;
+    margin-top:7px;
+    font-size:14px;
+}
 
 .search{
-max-width:650px;
-margin:22px auto 0;
-display:flex;
+    max-width:650px;
+    margin:22px auto 0;
 }
+
 .search input{
-width:100%;
-padding:16px;
-border:0;
-border-radius:14px;
-font-size:16px;
-outline:none;
+    width:100%;
+    padding:16px 20px;
+    border:1px solid #343850;
+    border-radius:15px;
+    background:#fff;
+    color:#111;
+    font-size:16px;
+    outline:none;
 }
+
+/* CONTENEDOR */
 
 .container{
-max-width:1100px;
-margin:auto;
-padding:22px 15px;
+    max-width:1150px;
+    margin:auto;
+    padding:20px 14px 50px;
 }
+
+/* PROMOS */
+
+.promo{
+    background:
+    linear-gradient(135deg,#6b4cff,#381c91);
+    border-radius:20px;
+    padding:22px;
+    margin-bottom:22px;
+    box-shadow:0 10px 35px rgba(72,48,180,.25);
+}
+
+.promo h2{
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.promo p{
+    color:#eee;
+    margin-bottom:15px;
+}
+
+.promo-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:10px;
+}
+
+.promo-card{
+    background:rgba(0,0,0,.22);
+    border:1px solid rgba(255,255,255,.15);
+    padding:14px;
+    border-radius:14px;
+    text-align:center;
+}
+
+.promo-card strong{
+    display:block;
+    font-size:21px;
+}
+
+.promo-card small{
+    color:#ddd;
+}
+
+/* CATEGORIAS */
 
 .categories{
-display:flex;
-gap:10px;
-overflow-x:auto;
-margin-bottom:22px;
-}
-.categories button{
-border:0;
-background:#191d2b;
-color:white;
-padding:13px 20px;
-border-radius:12px;
-font-weight:bold;
-cursor:pointer;
-white-space:nowrap;
-}
-.categories button.active,
-.categories button:hover{
-background:#6c4cff;
+    display:flex;
+    gap:9px;
+    overflow-x:auto;
+    padding-bottom:7px;
+    margin-bottom:22px;
 }
 
-.title{
-font-size:25px;
-margin-bottom:15px;
+.categories button{
+    border:1px solid #2b3043;
+    background:#141827;
+    color:white;
+    padding:12px 18px;
+    border-radius:12px;
+    font-weight:bold;
+    white-space:nowrap;
+    cursor:pointer;
 }
+
+.categories button.active{
+    background:#6c4cff;
+    border-color:#8067ff;
+}
+
+/* INFO */
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.section-title h2{
+    font-size:24px;
+}
+
+.counter{
+    color:#969bb0;
+    font-size:14px;
+}
+
+/* GRID */
 
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-gap:15px;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(165px,1fr));
+    gap:15px;
 }
+
+/* CARD */
 
 .card{
-background:#141824;
-border:1px solid #252b3e;
-border-radius:16px;
-overflow:hidden;
-transition:.2s;
+    background:#121622;
+    border:1px solid #242a3c;
+    border-radius:17px;
+    overflow:hidden;
+    position:relative;
+    transition:.2s;
 }
+
 .card:hover{
-transform:translateY(-4px);
-border-color:#6c4cff;
+    transform:translateY(-5px);
+    border-color:#735bff;
 }
+
+/* IMAGEN */
 
 .cover{
-height:210px;
-background:linear-gradient(135deg,#252a40,#11131c);
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:15px;
-font-size:20px;
-font-weight:bold;
+    height:225px;
+    position:relative;
+    background:#202537;
+    overflow:hidden;
 }
 
-.info{padding:14px}
+.cover img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.cover-fallback{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:15px;
+    background:
+    linear-gradient(135deg,#252b44,#11131d);
+    font-weight:900;
+    font-size:20px;
+}
+
+/* ETIQUETAS */
+
+.badge{
+    position:absolute;
+    top:9px;
+    left:9px;
+    padding:6px 9px;
+    border-radius:8px;
+    background:#6c4cff;
+    font-size:11px;
+    font-weight:900;
+    z-index:2;
+}
+
+.badge.offer{
+    background:#ff9d00;
+    color:#111;
+}
+
+.badge.exclusive{
+    background:#e052ff;
+}
+
+/* INFORMACION */
+
+.info{
+    padding:13px;
+}
+
 .console{
-font-size:12px;
-color:#9d8cff;
-font-weight:bold;
-text-transform:uppercase;
+    color:#998aff;
+    font-size:11px;
+    font-weight:900;
+    text-transform:uppercase;
 }
+
 .name{
-font-size:16px;
-font-weight:bold;
-margin:7px 0;
+    font-size:16px;
+    font-weight:bold;
+    margin:6px 0;
+    min-height:38px;
 }
+
 .price{
-font-size:20px;
-font-weight:900;
-margin:8px 0;
+    font-size:21px;
+    font-weight:900;
+    margin:7px 0;
 }
+
+.old-price{
+    color:#777d91;
+    text-decoration:line-through;
+    font-size:13px;
+    margin-right:5px;
+}
+
 .btn{
-display:block;
-text-align:center;
-background:#6c4cff;
-color:white;
-text-decoration:none;
-padding:10px;
-border-radius:10px;
-font-weight:bold;
-margin-top:8px;
+    width:100%;
+    border:0;
+    background:#6c4cff;
+    color:white;
+    padding:10px;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
 }
-.btn:hover{background:#8066ff}
+
+.btn:active{
+    transform:scale(.98);
+}
+
+/* VACIO */
 
 .empty{
-text-align:center;
-padding:40px;
-color:#9da3b8;
-display:none;
+    display:none;
+    text-align:center;
+    padding:50px 15px;
+    color:#949aae;
 }
 
+/* FOOTER */
+
 footer{
-margin-top:40px;
-padding:25px;
-text-align:center;
-background:#11131c;
-color:#8f94a8;
+    background:#0d1018;
+    border-top:1px solid #202536;
+    text-align:center;
+    padding:28px 15px;
+    color:#777d91;
 }
+
+footer strong{
+    color:white;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:500px){
+
+    .logo{
+        font-size:32px;
+    }
+
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:11px;
+    }
+
+    .cover{
+        height:210px;
+    }
+
+    .name{
+        font-size:14px;
+    }
+
+    .price{
+        font-size:18px;
+    }
+
+    .container{
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="logo">🎮 Game<span>Zone</span></div>
-<div class="sub">Catálogo de juegos · PS2 · PS3 · Switch</div>
 
-<div class="search">
-<input id="search" type="text" placeholder="🔎 Buscar un juego...">
-</div>
+    <div class="logo">
+        🎮 Game<span>Zone</span>
+    </div>
+
+    <div class="subtitle">
+        Catálogo de juegos · PS2 · PS3 · Switch
+    </div>
+
+    <div class="search">
+        <input
+            id="search"
+            type="text"
+            placeholder="🔎 Buscar juego..."
+        >
+    </div>
+
 </header>
+
 
 <main class="container">
 
-<div class="categories">
-<button class="active" onclick="filtrar('todos',this)">Todos</button>
-<button onclick="filtrar('PS2',this)">🎮 PS2</button>
-<button onclick="filtrar('PS3',this)">🎮 PS3</button>
-<button onclick="filtrar('Switch',this)">🎮 Switch</button>
-</div>
+    <!-- PROMOCIONES -->
 
-<h2 class="title">🔥 Juegos destacados</h2>
+    <section class="promo">
 
-<div class="grid" id="catalogo">
+        <h2>🔥 PROMOCIONES</h2>
 
-<div class="card" data-console="PS2">
-<div class="cover">GTA San Andreas</div>
-<div class="info">
-<div class="console">PS2</div>
-<div class="name">GTA San Andreas</div>
-<div class="price">$0</div>
-<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
-</div>
-</div>
+        <p>
+            Aprovechá nuestras ofertas y llevate más juegos por menos.
+        </p>
 
-<div class="card" data-console="PS2">
-<div class="cover">God of War II</div>
-<div class="info">
-<div class="console">PS2</div>
-<div class="name">God of War II</div>
-<div class="price">$0</div>
-<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
-</div>
-</div>
+        <div class="promo-grid">
 
-<div class="card" data-console="PS2">
-<div class="cover">Resident Evil 4</div>
-<div class="info">
-<div class="console">PS2</div>
-<div class="name">Resident Evil 4</div>
-<div class="price">$0</div>
-<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
-</div>
-</div>
+            <div class="promo-card">
+                <strong>3 x $2.500</strong>
+                <small>Juegos normales</small>
+            </div>
 
-<div class="card" data-console="PS3">
-<div class="cover">GTA V</div>
-<div class="info">
-<div class="console">PS3</div>
-<div class="name">Grand Theft Auto V</div>
-<div class="price">$0</div>
-<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
-</div>
-</div>
+            <div class="promo-card">
+                <strong>5 x $4.000</strong>
+                <small>Juegos normales</small>
+            </div>
 
-<div class="card" data-console="PS3">
-<div class="cover">The Last of Us</div>
-<div class="info">
-<div class="console">PS3</div>
-<div class="name">The Last of Us</div>
-<div class="price">$0</div>
-<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
-</div>
-</div>
+            <div class="promo-card">
+                <strong>2 x $1.800</strong>
+                <small>Juegos seleccionados</small>
+            </div>
 
-<div class="card" data-console="PS3">
-<div class="cover">Red Dead Redemption</div>
-<div class="info">
-<div class="console">PS3</div>
-<div class="name">Red Dead Redemption</div>
-<div class="price">$0</div>
-<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
-</div>
-</div>
+        </div>
 
-<div class="card" data-console="Switch">
-<div class="cover">Mario Kart 8 Deluxe</div>
-<div class="info">
-<div class="console">Switch</div>
-<div class="name">Mario Kart 8 Deluxe</div>
-<div class="price">$0</div>
-<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
-</div>
-</div>
+    </section>
 
-<div class="card" data-console="Switch">
-<div class="cover">Super Mario Odyssey</div>
-<div class="info">
-<div class="console">Switch</div>
-<div class="name">Super Mario Odyssey</div>
-<div class="price">$0</div>
-<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
-</div>
-</div>
 
-<div class="card" data-console="Switch">
-<div class="cover">The Legend of Zelda</div>
-<div class="info">
-<div class="console">Switch</div>
-<div class="name">The Legend of Zelda</div>
-<div class="price">$0</div>
-<a class="btn" href="https://wa.me/" target="_blank">Consultar</a>
-</div>
-</div>
+    <!-- FILTROS -->
 
-</div>
+    <div class="categories">
 
-<div class="empty" id="empty">
-No encontramos ese juego 😕
-</div>
+        <button
+            class="active"
+            onclick="filtrar('Todos',this)">
+            🎮 Todos
+        </button>
 
-</main>
+        <button
+            onclick="filtrar('PS2',this)">
+            🎮 PS2
+        </button>
 
-<footer>
-🎮 GameZone<br>
-Catálogo de juegos PS2 · PS3 · Switch
-</footer>
+        <button
+            onclick="filtrar('PS3',this)">
+            🎮 PS3
+        </button>
 
-<script>
-let consolaActual="todos";
+        <button
+            onclick="filtrar('Switch',this)">
+            🎮 Switch
+        </button>
 
-function filtrar(consola,boton){
-consolaActual=consola;
+        <button
+            onclick="filtrar('Exclusivos',this)">
+            ⭐ Exclusivos
+        </button>
 
-document.querySelectorAll(".categories button")
-.forEach(b=>b.classList.remove("active"));
+        <button
+            onclick="filtrar('Ofertas',this)">
+            🔥 Ofertas
+        </button>
 
-boton.classList.add("active");
-mostrar();
-}
+    </div>
 
-document.getElementById("search").addEventListener("input",mostrar);
 
-function mostrar(){
-let texto=document.getElementById("search").value.toLowerCase();
-let tarjetas=document.querySelectorAll(".card");
-let encontrados=0;
+    <!-- TITULO -->
 
-tarjetas.forEach(card=>{
-let nombre=card.querySelector(".name").textContent.toLowerCase();
-let consola=card.dataset.console;
+    <div class="section-title">
 
-let coincideNombre=nombre.includes(texto);
-let coincideConsola=
-consolaActual==="todos" || consola===consolaActual;
+        <h2>🎮 Catálogo</h2>
 
-if(coincideNombre && coincideConsola){
-card.style.display="block";
-encontrados++;
-}else{
-card.style.display="none";
-}
-});
+        <div class="counter">
+            <span id="cantidad">0</span> juegos
+        </div>
 
-document.getElementById("empty").style.display=
-encontrados===0?"block":"none";
-}
-</script>
+    </div>
 
-</body>
-  </html>
+
+    <!-- JUEGOS -->
+
+    <div class="grid" id="catalogo">
+
+
+        <!-- PS2 -->
+
+        <div class="card" data-console="PS2" data-type="normal">
+
+            <div class="cover">
+                <div class="badge">PS2</div>
+
+                <img
+                src="https://en.wikipedia.org/wiki/Special:FilePath/Grand_Theft_Auto_San_Andreas_cover.png"
+                alt="GTA San Andreas"
+                onerror="this.style.display='none'">
+            </div>
+
+            <div class="info">
+                <div class="console">PlayStation 2</div>
+                <div class="name">GTA San Andreas</div>
+                <div class="price">$1.000</div>
+                <button class="btn" onclick="consultar('GTA San Andreas')">
+                    Consultar
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="card" data-console="PS2" data-type="normal">
+
+            <div class="cover">
+                <div class="badge">PS2</div>
+
+                <img
+                src="https://en.wikipedia.org/wiki/Special:FilePath/Grand_Theft_Auto_Vice_City_cover.png"
+                alt="GTA Vice City"
+                onerror="this.style.display='none'">
+            </div>
+
+            <div class="info">
+                <div class="console">PlayStation 2</div>
+                <div class="name">GTA Vice City</div>
+                <div class="price">$1.000</div>
+                <button class="btn" onclick="consultar('GTA Vice City')">
+                    Consultar
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="card" data-console="PS2" data-type="exclusive">
+
+            <div class="cover">
+                <div class="badge exclusive">EXCLUSIVO</div>
+
+                <img
+                src="https://en.wikipedia.org/wiki/Special:FilePath/God_of_War_II_cover.jpg"
+                alt="God of War II"
+                onerror="this.style.display='none'">
+            </div>
+
+            <div class="info">
+                <div class="console">PlayStation 2</div>
+                <div class="name">God of War II</div>
+                <div class="price">$2.500</div>
+                <button class="btn" onclick="consultar('God of War II')">
+                    Consultar
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="card" data-console="PS2" data-type="normal">
+
+            <div class="cover">
+                <div class="badge">PS2</div>
+
+                <img
+                src="https://en.wikipedia.org/wiki/Special:FilePath/Resident_Evil_4_cover.jpg"
+                alt="Resident Evil 4"
+                onerror="this.style.display='none'">
+            </div>
+
+            <div class="info">
+                <div class="console">PlayStation 2</div>
+                <div class="name">Resident Evil 4</div>
+                <div class="price">$1.000</div>
+                <button class="btn" onclick="consultar('Resident Evil 4')">
+                    Consultar
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="card" data-console="PS2" data-type="normal">
+
+            <div class="cover">
+                <div class="badge">PS2</div>
+
+                <img
+                src="https://en.wikipedia.org/wiki/Special:FilePath/Need_for_Speed_Most_Wanted_cover.jpg"
+                alt="Need for Speed Most Wanted"
+                onerror="this.style.display='none'">
+            </div>
+
+            <div class="info">
+                <div class="console">PlayStation 2</div>
+                <div class="name">Need for Speed Most Wanted</div>
+                <div class="price">$1.000</div>
+                <button class="btn" onclick="consultar('Need for Speed Most Wanted')">
+                    Consultar
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="card" data-console="PS2" data-type="normal">
+
+            <div class="cover">
+                <div class="badge">PS2</div>
+
+                <img
+                src="https://en.wikipedia.org/wiki/Special:FilePath/Dragon_Ball_Z_Budokai_Tenkaichi_3_cover.jpg"
+                alt="Dragon Ball Z Budokai Tenkaichi 3"
+                onerror="this.style.display='none'">
+            </div>
+
+            <div class="info">
+                <div class="console">PlayStation 2</div>
+                <div class="name">Dragon Ball Z Budokai Tenkaichi 3</div>
+                <div class="price">$1.000</div>
+                <button class="btn" onclick="consultar('Dragon Ball Z Budokai Tenkaichi 3')">
+                    Consultar
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- PS3 -->
+
+        <div class="card" data-console="PS3" data-type="normal">
+
+            <div class="cover">
+                <div class="badge">PS3</div>
+
+                <img
+                src="https://en.wikipedia.org/wiki/Special:FilePath/Grand_Theft_Auto_V_cover.png"
+                alt="GTA V"
+                onerror="this.style.display='none'">
+            </div>
+
+            <div class="info">
+                <div class="console">PlayStation 3</div>
+                <div class="name">Grand Theft Auto V</div>
+                <div class="price">$1.000</div>
+                <button class="btn" onclick="consultar('Grand Theft Auto V')">
+                    Consultar
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="card" data-console="PS3" data-type="normal">
+
+            <div class="cover">
+                <div class="badge">PS3</div>
+
+                <img
+                src="https://en.wikipedia.org/wiki/Special:FilePath/The_Last_of_Us_cover_art.jpg"
+                alt="The Last of Us"
+                onerror="this.style.display='none'">
+            </div>
+
+            <div class="info">
+                <div class="console">PlayStation 3</div>
+                <div class="name">The Last of Us</div>
+                <div class="price">$1.000</div>
+                <button class="btn" onclick="consultar('The Last of Us')">
+                    Consultar
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="card" data-console="PS3" data-type="normal">
+
+            <div class="cover">
+                <div class="badge">PS3</div>
+
+                <img
+                src="https://en.wikipedia.org/wiki/Special:FilePath/Red_Dead_Redemption_coverart.jpg"
+                alt="Red Dead Redemption"
+                onerror="this.style.display='none'">
+            </div>
+
+            <div class="info">
+                <div class="console">PlayStation 3</div>
+                <div class="name">Red Dead Redemption</div>
+                <div class="price">$1.000</div>
+                <button class="btn" onclick="consultar('Red Dead Redemption')">
+                    Consultar
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="card" data-console="PS3" data-type="normal">
+
+            <div class="cover">
+                <div class="badge">PS3</div>
+
+                <img
+                src="https://en.wikipedia.org/wiki/Special:FilePath/Uncharted_2_cover.jpg"
+                alt="Uncharted 2"
+                onerror="this.style.display='none'">
+            </div>
+
+            <div class="info">
+                <div class="console">PlayStation 3</div>
+                <div class="name">Uncharted 2</div>
+                <div class="price">$1.000</div>
+                <button class="btn" onclick="consultar('Uncharted 2')">
+                    Consultar
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="card" data-console="PS3" data-type="normal">
+
+            <div class="cover">
+                <div class="badge">PS3</div>
+
+                <img
+                src="https://en.wikipedia.org/wiki/Special:FilePath/God_of_War_III_cover.jpg"
+                alt="God of War III"
+                onerror="this.style.display='none'">
+            </div>
+
+            <div class="info">
+                <div class="console">PlayStation 3</div>
+                <div class="name">God of War III</div>
+                <div class="price">$1.000</div>
+                <button class="btn" onclick="consultar('God of War III')">
+                    Consultar
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="card" data-console="PS3" data-type="normal">
+
+            <div class="cover">
+                <div class="badge">PS3</div>
+
+                <img
+                src="https://en.wikipedia.org/wiki/Special:FilePath/Metal_Gear_Solid_4_cover.jpg"
+                alt="Metal Gear Solid 4"
+                onerror="this.style.display='none'">
+            </div>
+
+            <div class="info">
+                <div class="console">PlayStation 3</div>
+                <div class="name">Metal Gear Solid 4</div>
+                <div class="price">$1.000</div>
+                <button class="btn" onclick="consultar('Metal Gear Solid 4')">
+                    Consultar
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- SWITCH -->
+
+        <div class="card" data-console="Switch" data-type="exclusive">
+
+            <div class="cover">
+                <div class="badge exclusive">EXCLUSIVO</div>
+
+                <img
+                src="https://en.wikipedia.org/wiki/Special:FilePath/Super_Mario_Odyssey.jpg"
+                alt="Super Mario Odyssey"
+                onerror="this.style.display='none'">
+            </div>
+
+            <div class="info">
+                <div class="console">Nintendo Switch</div>
+                <div class="name">Super Mario Odyssey</div>
+                <div class="price">$2.500</div>
+                <button class="btn" onclick="consultar('Super Mario Odyssey')">
+                    Consultar
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="card" data-console="Switch" data-type="exclusive">
+
+            <div class="cover">
+                <div class="badge exclusive">EXCLUSIVO</div>
+
+                <img
+                src="https://en.wikipedia.org/wiki/Special:FilePath/Mario_Kart_8_Deluxe.jpg"
+                alt="Mario Kart 8 Deluxe"
+                onerror="this.style.display='none'">
+            </div>
+
+            <div class="info">
+                <div class="console">Nintendo Switch</div>
+                <div class="name">Mario Kart 8 Deluxe</div>
+                <div class="price">$2.500</div>
+                <button class="btn" onclick="consultar('Mario Kart 8 Deluxe')">
+                    Consultar
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="card" data-console="Switch" data-type="exclusive">
+
+            <div class="cover">
+                <div class="badge exclusive">EXCLUSIVO</div>
+
+                <img
+                src="https://en.wikipedia.org/wiki/Special:FilePath/The_Legend_of_Zelda_Breath_of_the_Wild.jpg"
+                alt="Zelda Breath of the Wild"
+                onerror="this.style.display='none'">
+            </div>
+
+            <div class="info">
+                <div class="console">Nintendo Switch</div>
+                <div class="name">Zelda Breath of the Wild</div>
+                <div class="price">$2.500</div>
+                <button class="btn" onclick="consultar('Zelda Breath of the Wild')">
+                    Consultar
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="card" data-console="Switch" data-type="exclusive">
+
+            <div class="cover">
+                <div class="badge exclusive">EXCLUSIVO</div>
+
+                <img
+                src="https://en.wikipedia.org/wiki/Special:FilePath/Pokemon_Scarlet_and_Violet.jpg"
+                alt="Pokémon Scarlet"
+                onerror="this.style.display='none'">
+            </div>
+
+            <div class="info">
+                <div class="console">Nintendo Switch</div>
+                <div class="name">Pokémon Scarlet</div>
+                <div class="price">$2.500</div>
+                <button class="btn" onclick="consultar('Pokémon Scarlet')">
+                    Consultar
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="card" data-console="Switch" data-type="exclusive">
+
+            <div class="cover">
+                <div class="badge exclusive">EXCLUSIVO</div>
+
+                <img
+                src="https://en.wikipedia.org/wiki/Special:FilePath/Super_Smash_Bros._Ultimate.jpg"
+                alt="Super Smash Bros Ultimate"
+                onerror="this.style.display='none'">
+            </div>
+
+            <div class="info">
+                <div class="console">Nintendo Switch</div>
+                <div class="name">Super Smash Bros. Ultimate</div>
+                <div class="price">$2.500</div>
+                <button class="btn" onclick="consultar('Super Smash Bros. Ultimate')">
+                    Consultar
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="card" data-console="Switch" data-type="normal">
+
+            <div class="cover">
+                <div class="badge offer">OFERTA</div>
+
+                <img
+                src="ht
