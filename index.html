@@ -1,99 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GameZone Corrientes - PS2 PS3 Switch</title>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameZone - Editable</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
-body{background:#050a1e;color:white}
-header{background:#080e26;padding:16px;text-align:center;border-bottom:3px solid #2a5cff;position:sticky;top:0;z-index:10}
-header h1{font-size:28px} header h1 span{color:#3a86ff}
-.promos{max-width:1200px;margin:15px auto;background:linear-gradient(90deg,#2a4bff,#7a2bff);border-radius:16px;padding:16px;display:flex;justify-content:space-around;flex-wrap:wrap;gap:10px;text-align:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:14px;padding:14px;max-width:1200px;margin:auto}
-.card{background:#121f44;border:1px solid #24357a;border-radius:14px;overflow:hidden}
-.card img{width:100%;height:230px;object-fit:cover;background:#0a1430;display:block}
-.card-body{padding:10px}
-.card h3{font-size:13px;min-height:36px;line-height:1.2}
-.price{color:#6aff9a;font-weight:800;margin:6px 0;font-size:16px}
-.btn-wa{display:block;text-align:center;background:#25D366;color:#000;padding:9px;border-radius:9px;font-weight:800;text-decoration:none;margin-top:6px}
-.btn-ver{display:block;text-align:center;background:#2a5cff;color:white;padding:8px;border-radius:9px;font-weight:700;text-decoration:none;margin-top:6px;cursor:pointer}
-#modal{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;z-index:999;padding:12px;overflow:auto}
-.box{max-width:650px;margin:20px auto;background:#0c1535;border-radius:16px;overflow:hidden}
-.box img{width:100%;height:320px;object-fit:cover}
-.box.info{padding:16px}
-.box iframe{width:100%;height:220px;border:none;border-radius:10px;margin-top:10px;background:#000}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial} body{background:#050a1e;color:white}
+header{padding:15px;text-align:center;background:#0c1535;position:sticky;top:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;padding:12px;max-width:1100px;margin:auto}
+.card{background:#121f44;border-radius:12px;overflow:hidden;border:1px solid #24357a}
+.card img{width:100%;height:210px;object-fit:cover;background:#0a1430}
+.card-body{padding:8px}.price{color:#6aff9a;font-weight:800}
+.btn{display:block;text-align:center;padding:8px;border-radius:8px;text-decoration:none;font-weight:800;margin-top:5px}
+.ver{background:#2a5cff;color:white}.wa{background:#25D366;color:black}
+#modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:99;padding:10px}
+.box{max-width:600px;margin:20px auto;background:#0c1535;border-radius:12px;padding:12px}
+.box img{width:100%;height:300px;object-fit:cover;border-radius:8px}
 </style>
 </head>
 <body>
-<header>
-<h1>🎮 Game<span>Zone</span> - Corrientes</h1>
-<p>📲 3795-118415 | Envíos a todo el país | Stock real</p>
-</header>
-
-<div class="promos">
-<div><b>3 x $3.500</b><br>PS2 Clásicos</div>
-<div><b>3 x $4.500</b><br>PS3 Hits</div>
-<div><b>2 x $5.500</b><br>Nintendo Switch</div>
-</div>
-
+<header><h1>🎮 GameZone Corrientes</h1><p>3795-118415 | Tocá el juego para ver video</p></header>
 <div class="grid" id="grid"></div>
 
-<div id="modal" onclick="if(event.target==this)cerrar()">
-<div class="box">
-<img id="mImg">
-<div class="info">
-<h2 id="mTitle"></h2>
-<p id="mDesc" style="margin:8px 0;color:#cbd5ff;line-height:1.5"></p>
-<iframe id="mVideo" allowfullscreen></iframe>
-<a id="mWa" class="btn-wa" style="padding:14px;margin-top:12px;font-size:18px" target="_blank">🟢 CONSULTAR POR WHATSAPP</a>
-<button onclick="cerrar()" style="width:100%;margin-top:8px;background:#1a254d;color:white;border:none;padding:10px;border-radius:10px">Cerrar</button>
-</div>
-</div>
-</div>
+<div id="modal" onclick="if(event.target==this)cerrar()"><div class="box">
+<img id="mImg"><h2 id="mTit"></h2><p id="mDesc"></p>
+<iframe id="mVid" style="width:100%;height:200px;border:0;border-radius:8px;margin-top:8px" allowfullscreen></iframe>
+<a id="mWa" class="btn wa" target="_blank" style="margin-top:10px;padding:12px">Consultar por WhatsApp</a>
+<button onclick="cerrar()" style="width:100%;margin-top:6px;padding:8px;background:#1a254d;color:white;border:0;border-radius:8px">Cerrar</button>
+</div></div>
 
 <script>
-const JUEGOS=[
-{t:"GTA San Andreas - PS2",p:"$1.200",img:"https://upload.wikimedia.org/wikipedia/en/4/4b/Grand_Theft_Auto_San_Andreas_box_art.jpg",yt:"yOzcbtsMv50",d:"El más vendido de PS2. Mundo abierto enorme, 100hs de juego. Historia de CJ en Los Santos. 1 jugador."},
-{t:"God of War II - PS2",p:"$2.500",img:"https://upload.wikimedia.org/wikipedia/en/8/84/God_of_War_II_cover.jpg",yt:"d34oC7oZqQE",d:"Kratos vs Zeus. El mejor hack and slash de PS2. Gráficos brutales. Exclusivo PlayStation."},
-{t:"Shadow of the Colossus - PS2",p:"$2.200",img:"https://upload.wikimedia.org/wikipedia/en/9/9f/Shadow_of_the_Colossus.jpg",yt:"pdZQ98AHz1g",d:"Obra maestra. Vos, tu caballo Agro y 16 colosos gigantes. Emocionante."},
-{t:"Resident Evil 4 - PS2",p:"$1.500",img:"https://upload.wikimedia.org/wikipedia/en/7/7c/Resident_Evil_4_cover.png",yt:"u90g8OdbNsc",d:"Leon en pueblo infectado. Acción y terror. Cambió la saga para siempre."},
-{t:"Need for Speed Most Wanted - PS2",p:"$1.200",img:"https://upload.wikimedia.org/wikipedia/en/a/ae/Nfs_most_wanted_box_art.jpg",yt:"8fs6E2l5zH4",d:"Tuning + Policía. Persecuciones épicas y Blacklist. 1-2 jugadores."},
-{t:"GTA V - PS3",p:"$1.500",img:"https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png",yt:"QkkoHAzjnUs",d:"Los Santos en HD. 3 protagonistas, atracos y online. El más vendido de PS3."},
-{t:"The Last of Us - PS3",p:"$2.000",img:"https://upload.wikimedia.org/wikipedia/en/4/46/Video_Game_Cover_-_The_Last_of_Us.jpg",yt:"W2Wnvvj33Wo",d:"Joel y Ellie en mundo post-apocalíptico. La mejor historia de PS3. Exclusivo."},
-{t:"Red Dead Redemption - PS3",p:"$1.800",img:"https://upload.wikimedia.org/wikipedia/en/3/33/Red_Dead_Redemption.jpg",yt:"-o7r0M2hT8c",d:"John Marston en el viejo oeste. Mundo abierto, cacería y duelos."},
-{t:"God of War III - PS3",p:"$2.200",img:"https://upload.wikimedia.org/wikipedia/en/a/a7/God_of_War_3_cover_art.png",yt:"K0u_kAWLJOA",d:"Final de la trilogía griega. Kratos destruye el Olimpo. Jefes colosales."},
-{t:"Uncharted 2 - PS3",p:"$1.500",img:"https://upload.wikimedia.org/wikipedia/en/2/22/Uncharted_2_box_artwork.jpg",yt:"I9a5g2gQy4E",d:"Nathan Drake en Nepal. Aventura cinematográfica, puzzles."},
-{t:"Zelda Breath of the Wild - Switch",p:"$6.500",img:"https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg",yt:"1rP1skW7Zc4",d:"Mundo abierto total. Escala todo, 120 santuarios. 100hs+. Mejor Zelda."},
-{t:"Mario Odyssey - Switch",p:"$5.500",img:"https://upload.wikimedia.org/wikipedia/en/8/8d/Super_Mario_Odyssey.jpg",yt:"wGQ9KmwsQ1k",d:"Mario y Cappy por el mundo. 999 lunas. Plataformas 3D perfecto."},
-{t:"Mario Kart 8 Deluxe - Switch",p:"$5.000",img:"https://upload.wikimedia.org/wikipedia/en/a/a1/Mario_Kart_8_Deluxe_cover.png",yt:"tKlRN2Y_8z8",d:"48 pistas, 4 jugadores en misma Switch. El mejor para juntadas."},
-{t:"Smash Bros Ultimate - Switch",p:"$5.800",img:"https://upload.wikimedia.org/wikipedia/en/5/50/Super_Smash_Bros._Ultimate.jpg",yt:"WShCN-AYHqA",d:"80 peleadores. Todos los personajes Nintendo. Pelea definitiva."},
-{t:"FIFA 23 - PS3 / PS2",p:"$1.000",img:"https://upload.wikimedia.org/wikipedia/en/a/ac/FIFA_23_Cover.jpg",yt:"o3V-Gvvzj3w",d:"Último FIFA con equipos 2026 parcheados. Ideal 2 jugadores."}
+// =======================
+// ACA EDITAS VOS - SOLO ESTO
+// Para agregar un juego, copiá y pegá un bloque { } y cambiá los datos
+// foto: subí tu foto a postimages.org y pegá el link directo
+// =======================
+const JUEGOS = [
+  {
+    titulo: "GTA San Andreas - PS2",
+    precio: "$1.200",
+    foto: "https://upload.wikimedia.org/wikipedia/en/4/4b/Grand_Theft_Auto_San_Andreas_box_art.jpg",
+    descripcion: "El clásico de PS2. Mundo abierto, 100hs de juego.",
+    youtubeID: "yOzcbtsMv50" // lo que está después de v= en youtube
+  },
+  {
+    titulo: "God of War 2 - PS2",
+    precio: "$2.500",
+    foto: "https://upload.wikimedia.org/wikipedia/en/8/84/God_of_War_II_cover.jpg",
+    descripcion: "Kratos vs los Dioses. El mejor de PS2.",
+    youtubeID: "d34oC7oZqQE"
+  },
+  {
+    titulo: "ACA PONE TU JUEGO",
+    precio: "$PONER PRECIO",
+    foto: "PEGAR LINK DE TU FOTO ACA",
+    descripcion: "Escribí 1 frase del juego",
+    youtubeID: "ID_DE_YOUTUBE"
+  }
 ];
+// =======================
+// FIN DE LO QUE EDITAS
+// =======================
 
 const grid=document.getElementById('grid');
 JUEGOS.forEach((j,i)=>{
-grid.innerHTML+=`
-<div class="card">
-<img src="${j.img}" loading="lazy">
-<div class="card-body">
-<h3>${j.t}</h3>
-<div class="price">${j.p}</div>
-<a class="btn-ver" onclick="abrir(${i})">👁️ Ver descripción + video</a>
-<a class="btn-wa" href="https://wa.me/5493795118415?text=Hola%20GameZone!%20Quiero%20consultar%20por%20${encodeURIComponent(j.t)}%20${j.p}%20-%20Soy%20de%20Corrientes" target="_blank">WhatsApp</a>
-</div>
-</div>`;
+  grid.innerHTML+=`<div class="card"><img src="${j.foto}"><div class="card-body"><h3 style="font-size:13px;min-height:30px">${j.titulo}</h3><div class="price">${j.precio}</div><a class="btn ver" onclick="ver(${i})">Ver + Video</a><a class="btn wa" href="https://wa.me/5493795118415?text=Hola! Quiero ${encodeURIComponent(j.titulo)}" target="_blank">WhatsApp</a></div></div>`
 });
-
-function abrir(i){
-let j=JUEGOS[i];
-document.getElementById('mImg').src=j.img;
-document.getElementById('mTitle').innerText=j.t+" - "+j.p;
-document.getElementById('mDesc').innerText=j.d;
-document.getElementById('mVideo').src="https://www.youtube.com/embed/"+j.yt;
-document.getElementById('mWa').href="https://wa.me/5493795118415?text=Hola%20GameZone!%20Quiero%20consultar%20por%20"+encodeURIComponent(j.t+" "+j.p);
-document.getElementById('modal').style.display='block';
-}
-function cerrar(){document.getElementById('modal').style.display='none';document.getElementById('mVideo').src='';}
+function ver(i){let j=JUEGOS[i]; document.getElementById('mImg').src=j.foto; document.getElementById('mTit').innerText=j.titulo+" "+j.precio; document.getElementById('mDesc').innerText=j.descripcion; document.getElementById('mVid').src="https://www.youtube.com/embed/"+j.youtubeID; document.getElementById('mWa').href="https://wa.me/5493795118415?text=Hola GameZone! Quiero "+encodeURIComponent(j.titulo); document.getElementById('modal').style.display="block";}
+function cerrar(){document.getElementById('modal').style.display="none";document.getElementById('mVid').src=""}
 </script>
 </body>
 </html>
