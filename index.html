@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GameZone</title>
+<style>body{background:#050a1e;color:#fff;font-family:Arial;margin:0}header{background:#0c1535;padding:15px;text-align:center} .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:10px}.card{background:#121f44;border-radius:10px;overflow:hidden}.card img{width:100%;height:200px;object-fit:cover}.card-body{padding:8px}.price{color:#6aff9a;font-weight:800}.btn{display:block;background:#25D366;color:#000;text-align:center;padding:8px;border-radius:8px;text-decoration:none;font-weight:800;margin-top:5px}</style>
+</head>
+<body>
+<header><h1>GameZone Corrientes</h1><p>3795-118415</p></header>
+<div class="grid" id="g"></div>
+<script>
+const J=[{t:"GTA San Andreas",p:"$1200",img:"https://i.postimg.cc/zfpsmzqk/grand-theft-auto-gta-san-andreas-sony-playstation-2-ps2-710425274107-cover-art.jpg"}];
+document.getElementById("g").innerHTML=J.map(j=>`<div class="card"><img src="${j.img}"><div class="card-body"><h3>${j.t}</h3><div class="price">${j.p}</div><a class="btn" href="https://wa.me/5493795118415?text=Quiero ${j.t}" target="_blank">WhatsApp</a></div></div>`).join("");
+</script>
+</body>
+</html>
