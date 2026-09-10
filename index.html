@@ -1,30 +1,286 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>GameZone | Juegos</title>
+  <meta name="description" content="GameZone - Tienda de videojuegos">
+  <meta name="theme-color" content="#0b0b0f">
+
+  <title>GameZone | Tienda de videojuegos</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <header>
-    <h1>🎮 GameZone</h1>
-    <p>Tu tienda de juegos</p>
+  <!-- ENCABEZADO -->
+  <header class="header">
+    <div class="container header-content">
+
+      <a href="#" class="logo" aria-label="GameZone inicio">
+        <span class="logo-icon">🎮</span>
+        <span>Game<span>Zone</span></span>
+      </a>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#juegos">Juegos</a>
+        <a href="#ofertas">Ofertas</a>
+      </nav>
+
+      <button
+        type="button"
+        class="cart-button"
+        id="cartButton"
+        aria-label="Abrir carrito"
+      >
+        🛒
+        <span>Carrito</span>
+        <strong id="cartCount">0</strong>
+      </button>
+
+    </div>
   </header>
 
-  <main>
-    <h2>Juegos disponibles</h2>
 
-    <section id="productos">
-      <!-- Los juegos los agregaremos después -->
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="container hero-content">
+
+        <div class="hero-text">
+          <span class="hero-badge">🎮 TIENDA GAMER</span>
+
+          <h1>
+            Encontrá tu próximo
+            <span>juego favorito.</span>
+          </h1>
+
+          <p>
+            Explorá nuestro catálogo de videojuegos,
+            encontrá las mejores ofertas y armá tu colección.
+          </p>
+
+          <a href="#juegos" class="primary-button">
+            Ver juegos
+          </a>
+        </div>
+
+      </div>
     </section>
+
+
+    <!-- JUEGOS -->
+    <section class="products-section" id="juegos">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <span class="section-label">CATÁLOGO</span>
+            <h2>Juegos disponibles</h2>
+          </div>
+
+          <div class="search-box">
+            <label for="searchInput" class="sr-only">
+              Buscar juegos
+            </label>
+
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="Buscar un juego..."
+              autocomplete="off"
+            >
+
+            <button
+              type="button"
+              id="searchButton"
+              aria-label="Buscar"
+            >
+              🔍
+            </button>
+          </div>
+        </div>
+
+
+        <!-- FILTROS -->
+        <div class="filters" aria-label="Filtros de juegos">
+
+          <button
+            type="button"
+            class="filter-button active"
+            data-category="todos"
+          >
+            Todos
+          </button>
+
+          <button
+            type="button"
+            class="filter-button"
+            data-category="ps3"
+          >
+            PS3
+          </button>
+
+          <button
+            type="button"
+            class="filter-button"
+            data-category="ps4"
+          >
+            PS4
+          </button>
+
+          <button
+            type="button"
+            class="filter-button"
+            data-category="ps5"
+          >
+            PS5
+          </button>
+
+        </div>
+
+
+        <!-- PRODUCTOS -->
+        <div
+          class="products-grid"
+          id="productsGrid"
+          aria-live="polite"
+        >
+          <!-- Los productos se cargarán automáticamente -->
+        </div>
+
+        <div
+          class="empty-state"
+          id="emptyState"
+          hidden
+        >
+          <div>🎮</div>
+          <h3>No encontramos juegos</h3>
+          <p>Probá con otro nombre o categoría.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- OFERTAS -->
+    <section class="offers-section" id="ofertas">
+      <div class="container">
+
+        <div class="offer-card">
+          <div>
+            <span class="section-label">OFERTAS</span>
+            <h2>Armá tu colección</h2>
+            <p>
+              Aprovechá nuestras promociones y encontrá
+              tus próximos juegos favoritos.
+            </p>
+          </div>
+
+          <a href="#juegos" class="secondary-button">
+            Explorar juegos
+          </a>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
+
+  <!-- CARRITO -->
+  <aside
+    class="cart-panel"
+    id="cartPanel"
+    aria-hidden="true"
+  >
+
+    <div class="cart-header">
+      <div>
+        <span class="section-label">TU COMPRA</span>
+        <h2>Carrito</h2>
+      </div>
+
+      <button
+        type="button"
+        id="closeCartButton"
+        class="close-button"
+        aria-label="Cerrar carrito"
+      >
+        ×
+      </button>
+    </div>
+
+
+    <div
+      class="cart-items"
+      id="cartItems"
+    >
+      <!-- Productos del carrito -->
+    </div>
+
+
+    <div class="cart-empty" id="cartEmpty">
+      <div>🛒</div>
+      <p>Tu carrito está vacío.</p>
+    </div>
+
+
+    <div class="cart-footer">
+
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cartTotal">$0</strong>
+      </div>
+
+      <button
+        type="button"
+        id="checkoutButton"
+        class="checkout-button"
+      >
+        Continuar con la compra
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- FONDO DEL CARRITO -->
+  <div
+    class="overlay"
+    id="overlay"
+    hidden
+  ></div>
+
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="footer">
+    <div class="container">
+
+      <div class="footer-content">
+
+        <div>
+          <strong>🎮 GameZone</strong>
+          <p>Tu tienda de videojuegos.</p>
+        </div>
+
+        <p>
+          © <span id="currentYear"></span> GameZone
+        </p>
+
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
   <script src="script.js"></script>
+
 </body>
 </html>
