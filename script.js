@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {id:1,name:"Grand Theft Auto: San Andreas",category:"destacado",price:2500,genre:"Mundo Abierto",top:true,image:"img/gta-san-andreas.jpg"},
     {id:2,name:"God of War",category:"destacado",price:2500,genre:"Hack and Slash",top:true,image:"img/god-of-war.jpg"},
     {id:3,name:"God of War II",category:"destacado",price:2500,genre:"Hack and Slash",top:true,image:"img/god-of-warII.jpg"},
-    {id:4,name:"Shadow of the Colossus",category:"destacado",price:2500,genre:"Aventura",top:true,image:img/"shadow-of-colosous.jpg"},
+    {id:4,name:"Shadow of the Colossus",category:"destacado",price:2500,genre:"Aventura",top:true,image:"img/shadow-of-colosous.jpg"},
     {id:5,name:"Metal Gear Solid 3: Snake Eater",category:"destacado",price:2500,genre:"Sigilo",top:false},
     {id:6,name:"Gran Turismo 4",category:"destacado",price:2500,genre:"Carreras",top:true},
     {id:7,name:"Final Fantasy X",category:"destacado",price:2500,genre:"RPG",top:true},
