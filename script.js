@@ -237,10 +237,15 @@ document.addEventListener("DOMContentLoaded", () => {
             ${badges}
           </div>
 
-          <div class="product-placeholder">
-            <span>🎮</span>
-            <small>PS2</small>
-          </div>
+         ${game.image
+  ? `<img src="${game.image}" alt="${game.name}" class="product-cover">`
+  : `
+    <div class="product-placeholder">
+      <span>🎮</span>
+      <small>PS2</small>
+    </div>
+  `
+}
 
         </div>
 
