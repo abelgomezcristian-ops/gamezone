@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================================================
 
   const games = [
-    {id:1,name:"Grand Theft Auto: San Andreas",category:"destacado",price:2500,genre:"Mundo Abierto",top:true},
+    {id:1,name:"Grand Theft Auto: San Andreas",category:"destacado",price:2500,genre:"Mundo Abierto",top:true,image:"img/gta-san-andreas.jpg"},
     {id:2,name:"God of War",category:"destacado",price:2500,genre:"Hack and Slash",top:true},
     {id:3,name:"God of War II",category:"destacado",price:2500,genre:"Hack and Slash",top:true},
     {id:4,name:"Shadow of the Colossus",category:"destacado",price:2500,genre:"Aventura",top:true},
