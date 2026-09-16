@@ -344,4 +344,156 @@ document.addEventListener("DOMContentLoaded", () => {
 
       button.classList.add("active");
 
-      currentCategory = button.dat
+      currentCategory = button.dataset.category;
+
+      renderProducts();
+    });
+  });
+
+
+  // =========================================================
+  // CARRITO — ABRIR / CERRAR
+  // =========================================================
+
+  function openCart() {
+    cartPanel.classList.add("open");
+    cartPanel.setAttribute("aria-hidden", "false");
+    overlay.hidden = false;
+  }
+
+  function closeCart() {
+    cartPanel.classList.remove("open");
+    cartPanel.setAttribute("aria-hidden", "true");
+    overlay.hidden = true;
+  }
+
+  if (cartButton) {
+    cartButton.addEventListener("click", openCart);
+  }
+
+  if (closeCartButton) {
+    closeCartButton.addEventListener("click", closeCart);
+  }
+
+  if (overlay) {
+    overlay.addEventListener("click", closeCart);
+  }
+
+
+  // =========================================================
+  // CARRITO — LÓGICA
+  // =========================================================
+
+  function addToCart(id) {
+
+    const game = games.find(g => g.id === id);
+
+    if (!game) return;
+
+    const existing = cart.find(item => item.id === id);
+
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({ ...game, quantity: 1 });
+    }
+
+    renderCart();
+    openCart();
+  }
+
+  function removeFromCart(id) {
+    cart = cart.filter(item => item.id !== id);
+    renderCart();
+  }
+
+  function renderCart() {
+
+    if (cart.length === 0) {
+      cartItems.innerHTML = "";
+      cartEmpty.hidden = false;
+    } else {
+      cartEmpty.hidden = true;
+
+      cartItems.innerHTML = cart
+        .map(item => {
+
+          const price = item.offerPrice || item.price;
+
+          return `
+            <div class="cart-item">
+
+              ${item.image
+                ? `<img src="${item.image}" alt="${item.name}" class="cart-item-image">`
+                : `<div class="cart-item-image"></div>`
+              }
+
+              <div class="cart-item-info">
+                <h3>${item.name}</h3>
+                <p>${formatPrice(price)} x ${item.quantity}</p>
+              </div>
+
+              <button
+                type="button"
+                class="remove-item"
+                data-id="${item.id}"
+                aria-label="Quitar del carrito"
+              >
+                ×
+              </button>
+
+            </div>
+          `;
+        })
+        .join("");
+    }
+
+    const total = cart.reduce((sum, item) => {
+      const price = item.offerPrice || item.price;
+      return sum + price * item.quantity;
+    }, 0);
+
+    cartTotal.textContent = formatPrice(total);
+
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = count;
+  }
+
+  productsGrid.addEventListener("click", (event) => {
+
+    const button = event.target.closest(".add-cart-button");
+
+    if (!button) return;
+
+    const id = Number(button.dataset.id);
+    addToCart(id);
+  });
+
+  cartItems.addEventListener("click", (event) => {
+
+    const button = event.target.closest(".remove-item");
+
+    if (!button) return;
+
+    const id = Number(button.dataset.id);
+    removeFromCart(id);
+  });
+
+  if (checkoutButton) {
+    checkoutButton.addEventListener("click", () => {
+      alert("¡Gracias por tu compra! Pronto nos pondremos en contacto.");
+      cart = [];
+      renderCart();
+      closeCart();
+    });
+  }
+
+
+  // =========================================================
+  // INICIO
+  // =========================================================
+
+  renderProducts();
+  renderCart();
+
+});
