@@ -3,55 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GAMEZONE - PS2 PS3 SWITCH</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<title>GAMEZONE</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#050507;color:white;font-family:'Inter',sans-serif;overflow-x:hidden}
-h1,h2{font-family:'Orbitron',sans-serif}
+body{background:#0a0a0f;color:#fff;font-family:Inter,sans-serif}
+.hero{position:relative;height:60vh;background:radial-gradient(ellipse at top,#1a2a4a 0%,#0a0a0f 70%);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero::before{content:'';position:absolute;width:200%;height:200%;background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(0,255,136,0.03) 20px,rgba(0,255,136,0.03) 40px);animation:move 20s linear infinite}
+@keyframes move{from{transform:translate(-50px,-50px)} to{transform:translate(0,0)}}
+.hero-content{position:relative;z-index:2;padding:20px}
+.hero-content h1{font-family:Orbitron;font-size:32px;line-height:1.1}
+.hero-content span{color:#00ff88;text-shadow:0 0 20px #00ff88}
+.cats{display:flex;gap:10px;overflow-x:auto;padding:20px;justify-content:center;flex-wrap:wrap;background:#0a0a0f;position:sticky;top:0;z-index:5}
+.cat{padding:11px 22px;border:1px solid #222;border-radius:30px;cursor:pointer;background:#15151d;font-weight:700;font-size:13px}
+.cat.active{background:#00ff88;color:#000;box-shadow:0 0 15px #00ff88;border-color:#00ff88}
+.cat.locked{opacity:0.25}
+.search-wrap{padding:15px 20px;max-width:700px;margin:0 auto}
+.search-wrap input{width:100%;padding:14px 18px;border-radius:12px;border:1px solid #222;background:#15151d;color:#fff;outline:none}
+.ofertas{max-width:1200px;margin:0 auto;padding:10px 20px}
+.oferta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:15px 0 30px}
+.oferta-card{background:linear-gradient(135deg,#1e1e2e,#16213e);border:1px solid #ffcc00;border-radius:14px;padding:16px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 12px 60px;max-width:1200px;margin:auto}
+@media(min-width:700px){.grid{grid-template-columns:repeat(4,1fr)}}
+.card{background:#15151d;border-radius:14px;overflow:hidden;border:1px solid #222;animation:pop.5s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(20px) scale(.95)} to{opacity:1;transform:translateY(0) scale(1)}}
+.card img{width:100%;aspect-ratio:3/4;object-fit:cover;background:#0f0f15;display:block}
+.card-info{padding:10px}
+.card-info h4{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-info p{font-size:11px;opacity:.5}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-content">
+    <h1>Encontrá tu próximo<br><span>juego favorito</span></h1>
+    <p style="opacity:.6;margin-top:10px">PS2 • PS3 • SWITCH • COMBOS</p>
+  </div>
+</div>
 
-/* HERO CON VIDEO CLIP */
-.hero{position:relative;height:72vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.hero video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.35) saturate(1.3)}
-.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at center, transparent 30%, #050507 95%), linear-gradient(to bottom, rgba(0,0,0,0.1), #050507)}
-.hero-content{position:relative;z-index:2;text-align:center;padding:20px;max-width:800px}
-.hero-content h1{font-size:clamp(2rem,6vw,3.8rem);text-transform:uppercase;letter-spacing:2px;line-height:1.1;animation:fadeUp 1s ease}
-.hero-content span{color:#00ff88;text-shadow:0 0 20px #00ff88, 0 0 40px #00ff88}
-.hero-content p{margin-top:15px;opacity:0.7;font-size:1.1rem;animation:fadeUp 1s ease 0.2s both}
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)}}
+<div class="cats" id="cats">
+  <div class="cat active" data-cat="ps2">PS2</div>
+  <div class="cat" data-cat="ps3">PS3</div>
+  <div class="cat" data-cat="combos">COMBOS / OFERTAS</div>
+  <div class="cat" data-cat="switch">SWITCH</div>
+  <div class="cat locked">PS4 PRÓXIMAMENTE</div>
+  <div class="cat locked">PS5 PRÓXIMAMENTE</div>
+</div>
 
-/* CATEGORIAS - COMO EN TU CAPTURA PERO PRO */
-.cats{display:flex;gap:12px;overflow-x:auto;padding:25px 20px;justify-content:center;flex-wrap:wrap;position:sticky;top:0;z-index:10;background:rgba(5,5,7,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #111}
-.cat{padding:12px 28px;border:1px solid #222;border-radius:30px;cursor:pointer;transition:.35s;white-space:nowrap;font-weight:700;font-size:.9rem;background:#0f0f14}
-.cat.active{background:#00ff88;color:black;box-shadow:0 0 20px #00ff88, 0 0 40px rgba(0,255,136,0.4);border-color:#00ff88;transform:scale(1.05)}
-.cat:hover:not(.locked){border-color:#00ff88;transform:translateY(-2px)}
-.cat.locked{opacity:0.3;pointer-events:none;position:relative}
-.cat.locked::after{content:'PRÓXIMAMENTE';position:absolute;top:-9px;right:-5px;font-size:0.55rem;background:#ff0055;padding:3px 7px;border-radius:10px;color:white;font-weight:900;letter-spacing:0.5px}
+<div class="search-wrap"><input id="search" placeholder="Buscar en PS2..."></div>
 
-/* BUSCADOR POR SECTOR */
-.search-wrap{max-width:700px;margin:25px auto;padding:0 20px}
-.search-box{position:relative}
-.search-box input{width:100%;background:#12121a;padding:16px 20px 16px 50px;border-radius:14px;border:1px solid #222;color:white;outline:none;font-size:1rem;transition:.3s}
-.search-box input:focus{border-color:#00ff88;box-shadow:0 0 20px rgba(0,255,136,0.15)}
-.search-box::before{content:'🔍';position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:1.2rem}
+<div class="ofertas">
+  <h2 style="font-family:Orbitron;font-size:16px;color:#ffcc00">🔥 OFERTAS</h2>
+  <div class="oferta-grid" id="ofertaGrid"></div>
+  <div class="grid" id="grid"></div>
+</div>
 
-/* OFERTAS PRIMERO */
-.ofertas{padding:10px 20px 0;max-width:1350px;margin:auto}
-.ofertas h2{color:#ffcc00;margin-bottom:18px;font-size:1.3rem;letter-spacing:1px}
-.oferta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:35px}
-.oferta-card{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border:1px solid #ffcc00;border-radius:18px;padding:22px;position:relative;overflow:hidden;cursor:pointer;transition:.3s}
-.oferta-card::before{content:'OFERTA HOT';position:absolute;top:12px;right:-30px;background:#ffcc00;color:black;font-size:.65rem;font-weight:900;padding:4px 40px;transform:rotate(35deg)}
-.oferta-card:hover{transform:translateY(-5px);box-shadow:0 15px 30px rgba(255,204,0,0.2)}
-.oferta-card h3{font-size:1.1rem;margin-bottom:6px}
-.oferta-card p{opacity:0.6;font-size:.9rem}
-.oferta-card .precio{margin-top:10px;color:#00ff88;font-weight:900;font-size:1.2rem}
-
-/* GRID JUEGOS - ANIMACION PRO */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;padding:0 20px 80px;max-width:1350px;margin:auto;perspective:1200px}
-.card{background:#12121a;border-radius:18px;overflow:hidden;border:1px solid #1e1e2a;transition:.5s cubic-bezier(0.34,1.56,0.64,1);cursor:pointer;position:relative}
-.card:hover{transform:translateY(-10px) rotateX(6deg) rotateY(-6deg) scale(1.04);border-color:#00ff88;box-shadow:0 20px 40px rgba(0,255,136,0.25)}
-.card .img-wrap{position:relative;overflow:hidden;aspect-ratio:3/4;background:#0a0a0f}
-.card .img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease}
-.card:hover .img-wrap img{transform:scale(1.15)}
-.card-info
+<script>
+const juegos={
+ps2:[{t:"Resident Evil 4"},{t:"Dragon Ball Z BT3"},{t:"PES 2013"},{t:"Need for Speed Most Wanted"},{t:"GTA San Andreas"},{t:"God of War 2"}],
+ps3:[{t:"The Last of Us"},{t:"GTA V"}],
+switch:[{t:"Zelda Breath of the Wild"},{t:"Mario Kart 8"}],
+combos:[{t:"Pack 10 Juegos PS2"},{t:"Pack GTA Trilogia"}]
+};
+const ofertas={
+ps2:[{t:"Pack 3x $5000",d:"Elegí 3 juegos"},{t:"Pack 10x $12000",d:"Más vendido"}],
+ps3:[{t:"Pack 3x PS3 $8000",d:"A elección"}],
+switch:[{t:"Mario Pack $15000",d:"Odyssey + Kart"}],
+combos:[{t:"MEGA PACK 20 Juegos",d:"PS2+PS3"}]
+};
+function cover(name){
+  return "https://picsum.photos/seed/"+encodeURIComponent(name.replace(/\s/g,''))+"/400/550";
+}
+let cat='ps2';
+const grid=document.getElementById('grid');
+const oGrid=document.getElementById('ofertaGrid');
+const search=document.getElementById('search');
+function render(){
+  grid.innerHTML='';
+  oGrid.innerHTML='';
+  (ofertas[cat]||[]).forEach(o=>{
+    oGrid.innerHTML+=`<div class="oferta-card"><b>${o.t}</b><br><small style="opacity:.6">${o.d}</small></div>`;
+  });
+  search.placeholder="Buscar en "+cat.toUpperCase()+"...";
+  let list=juegos[cat]||[];
+  let q=search.value.toLowerCase();
+  if(q) list=list.filter(j=>j.t.toLowerCase().includes(q));
+  list.forEach((j,i)=>{
+    let d=document.createElement('div');
+    d.className='card';
+    d.style.animationDelay=(i*0.07)+'s';
+    d.innerHTML=`<img src="${cover(j.t)}" loading="lazy"><div class="card-info"><h4>${j.t}</h4><p>${cat.toUpperCase()}</p></div>`;
+    grid.appendChild(d);
+  });
+}
+document.getElementById('cats').addEventListener('click',e=>{
+  if(!e.target.classList.contains('cat')||e.target.classList.contains('locked')) return;
+  document.querySelectorAll('.cat').forEach(c=>c.classList.remove('active'));
+  e.target.classList.add('active');
+  cat=e.target.dataset.cat;
+  search.value='';
+  render();
+});
+search.addEventListener('input',render);
+render();
+</script>
+</body>
+</html>
