@@ -135,11 +135,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // =========================================================
+  // PLATAFORMAS "PRÓXIMAMENTE"
+  // =========================================================
+
+  const platformInfo = {
+    switch: { icon: "🕹️", name: "Nintendo Switch" },
+    ps4: { icon: "🎮", name: "PS4" },
+    ps5: { icon: "🎮", name: "PS5" }
+  };
+
+
+  // =========================================================
   // ELEMENTOS DE LA PÁGINA
   // =========================================================
 
   const productsGrid = document.getElementById("productsGrid");
   const emptyState = document.getElementById("emptyState");
+  const platformComing = document.getElementById("platformComing");
+  const offersGrid = document.getElementById("offersGrid");
   const searchInput = document.getElementById("searchInput");
   const searchButton = document.getElementById("searchButton");
   const filterButtons = document.querySelectorAll(".filter-button");
@@ -236,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
 
          ${game.image
-  ? `<img src="${game.image}" alt="${game.name}" class="product-cover">`
+  ? `<img src="${game.image}" alt="${game.name}" class="product-cover" loading="lazy">`
   : `
     <div class="product-placeholder">
       <span>🎮</span>
@@ -282,6 +295,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderProducts() {
 
+    // Si la categoría elegida es una plataforma que todavía no tiene catálogo
+    if (platformInfo[currentCategory]) {
+
+      productsGrid.innerHTML = "";
+      emptyState.hidden = true;
+
+      const info = platformInfo[currentCategory];
+
+      platformComing.innerHTML = `
+        <div class="platform-coming-icon">${info.icon}</div>
+        <h3>${info.name}</h3>
+        <p>Estamos preparando el catálogo de esta plataforma.<br>¡Muy pronto vas a poder comprar acá!</p>
+        <span class="coming-badge">Próximamente</span>
+      `;
+
+      platformComing.hidden = false;
+      return;
+    }
+
+    platformComing.hidden = true;
+
     const search = currentSearch.trim().toLowerCase();
 
     const filteredGames = games.filter(game => {
@@ -294,344 +328,4 @@ document.addEventListener("DOMContentLoaded", () => {
         game.name.toLowerCase().includes(search) ||
         game.genre.toLowerCase().includes(search);
 
-      return matchesCategory && matchesSearch;
-    });
-
-    productsGrid.innerHTML = "";
-
-    if (filteredGames.length === 0) {
-      emptyState.hidden = false;
-      return;
-    }
-
-    emptyState.hidden = true;
-
-    productsGrid.innerHTML = filteredGames
-      .map(createProductCard)
-      .join("");
-  }
-
-
-  // =========================================================
-  // BUSCADOR
-  // =========================================================
-
-  function performSearch() {
-    currentSearch = searchInput.value;
-    renderProducts();
-  }
-
-  if (searchInput) {
-    searchInput.addEventListener("input", performSearch);
-  }
-
-  if (searchButton) {
-    searchButton.addEventListener("click", performSearch);
-  }
-
-
-  // =========================================================
-  // FILTROS
-  // =========================================================
-
-  filterButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-      filterButtons.forEach(btn => {
-        btn.classList.remove("active");
-      });
-
-      button.classList.add("active");
-
-      currentCategory = button.dataset.category;
-
-      renderProducts();
-    });
-
-  });
-
-
-  // =========================================================
-  // CARRITO
-  // =========================================================
-
-  function addToCart(gameId) {
-
-    const game = games.find(item => item.id === gameId);
-
-    if (!game) return;
-
-    const existingItem = cart.find(item => item.id === gameId);
-
-    if (existingItem) {
-      existingItem.quantity += 1;
-    } else {
-      cart.push({
-        id: game.id,
-        name: game.name,
-        price: game.offerPrice || game.price,
-        quantity: 1
-      });
-    }
-
-    renderCart();
-  }
-
-
-  function removeFromCart(gameId) {
-
-    cart = cart.filter(item => item.id !== gameId);
-
-    renderCart();
-  }
-
-
-  function changeQuantity(gameId, change) {
-
-    const item = cart.find(product => product.id === gameId);
-
-    if (!item) return;
-
-    item.quantity += change;
-
-    if (item.quantity <= 0) {
-      removeFromCart(gameId);
-      return;
-    }
-
-    renderCart();
-  }
-
-
-  // =========================================================
-  // RENDER CARRITO
-  // =========================================================
-
-  function renderCart() {
-
-    if (!cartItems) return;
-
-    cartItems.innerHTML = "";
-
-    if (cart.length === 0) {
-
-      cartEmpty.hidden = false;
-
-    } else {
-
-      cartEmpty.hidden = true;
-
-      cart.forEach(item => {
-
-        const cartItem = document.createElement("div");
-
-        cartItem.className = "cart-item";
-
-        cartItem.innerHTML = `
-          <div class="cart-item-info">
-
-            <strong>${item.name}</strong>
-
-            <span>
-              ${formatPrice(item.price)} c/u
-            </span>
-
-          </div>
-
-          <div class="cart-item-actions">
-
-            <button
-              type="button"
-              class="quantity-button"
-              data-action="decrease"
-              data-id="${item.id}"
-            >
-              −
-            </button>
-
-            <span>${item.quantity}</span>
-
-            <button
-              type="button"
-              class="quantity-button"
-              data-action="increase"
-              data-id="${item.id}"
-            >
-              +
-            </button>
-
-            <button
-              type="button"
-              class="remove-button"
-              data-action="remove"
-              data-id="${item.id}"
-              aria-label="Eliminar ${item.name}"
-            >
-              ×
-            </button>
-
-          </div>
-        `;
-
-        cartItems.appendChild(cartItem);
-      });
-    }
-
-    let total = 0;
-    let quantityTotal = 0;
-
-    cart.forEach(item => {
-      total += item.price * item.quantity;
-      quantityTotal += item.quantity;
-    });
-
-    cartTotal.textContent = formatPrice(total);
-    cartCount.textContent = quantityTotal;
-  }
-
-
-  // =========================================================
-  // BOTONES DEL CARRITO
-  // =========================================================
-
-  productsGrid.addEventListener("click", event => {
-
-    const button = event.target.closest(".add-cart-button");
-
-    if (!button) return;
-
-    const gameId = Number(button.dataset.id);
-
-    addToCart(gameId);
-
-    openCart();
-  });
-
-
-  cartItems.addEventListener("click", event => {
-
-    const button = event.target.closest("button");
-
-    if (!button) return;
-
-    const gameId = Number(button.dataset.id);
-    const action = button.dataset.action;
-
-    if (action === "increase") {
-      changeQuantity(gameId, 1);
-    }
-
-    if (action === "decrease") {
-      changeQuantity(gameId, -1);
-    }
-
-    if (action === "remove") {
-      removeFromCart(gameId);
-    }
-
-  });
-
-
-  // =========================================================
-  // ABRIR / CERRAR CARRITO
-  // =========================================================
-
-  function openCart() {
-
-    cartPanel.classList.add("open");
-
-    cartPanel.setAttribute("aria-hidden", "false");
-
-    overlay.hidden = false;
-
-    document.body.classList.add("cart-open");
-  }
-
-
-  function closeCart() {
-
-    cartPanel.classList.remove("open");
-
-    cartPanel.setAttribute("aria-hidden", "true");
-
-    overlay.hidden = true;
-
-    document.body.classList.remove("cart-open");
-  }
-
-
-  if (cartButton) {
-    cartButton.addEventListener("click", openCart);
-  }
-
-  if (closeCartButton) {
-    closeCartButton.addEventListener("click", closeCart);
-  }
-
-  if (overlay) {
-    overlay.addEventListener("click", closeCart);
-  }
-
-
-  // =========================================================
-  // ESC PARA CERRAR CARRITO
-  // =========================================================
-
-  document.addEventListener("keydown", event => {
-
-    if (event.key === "Escape") {
-      closeCart();
-    }
-
-  });
-
-
-  // =========================================================
-  // CONTINUAR CON LA COMPRA
-  // =========================================================
-
-  if (checkoutButton) {
-
-    checkoutButton.addEventListener("click", () => {
-
-      if (cart.length === 0) {
-        alert("Tu carrito está vacío.");
-        return;
-      }
-
-      let message = "Hola, quiero comprar:%0A%0A";
-
-      cart.forEach(item => {
-
-        message +=
-          `• ${item.name} x${item.quantity} — ${formatPrice(item.price * item.quantity)}%0A`;
-
-      });
-
-      const total = cart.reduce(
-        (sum, item) => sum + item.price * item.quantity,
-        0
-      );
-
-      message += `%0ATotal: ${formatPrice(total)}`;
-
-      // Más adelante vamos a poner acá el WhatsApp real de GameZone.
-      alert(
-        "La compra está preparada correctamente.%0A%0A" +
-        "En el próximo paso vamos a conectar este botón con WhatsApp."
-      );
-
-    });
-
-  }
-
-
-  // =========================================================
-  // INICIO
-  // =========================================================
-
-  renderProducts();
-  renderCart();
-
-});
+      return matchesCa
