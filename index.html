@@ -26,7 +26,7 @@
       <nav class="nav" aria-label="Navegación principal">
         <a href="#inicio">Inicio</a>
         <a href="#juegos">Juegos</a>
-        <a href="#ofertas">Ofertas</a>
+        <a href="#ofertas">Ofertas y Combos</a>
       </nav>
 
       <button
@@ -114,31 +114,47 @@
             class="filter-button active"
             data-category="todos"
           >
-            Todos
+            PS2
           </button>
 
           <button
             type="button"
             class="filter-button"
-            data-category="ps3"
+            data-category="destacado"
           >
-            PS3
+            Destacados
           </button>
 
           <button
             type="button"
             class="filter-button"
+            data-category="oferta"
+          >
+            Ofertas
+          </button>
+
+          <button
+            type="button"
+            class="filter-button filter-button-platform"
+            data-category="switch"
+          >
+            🕹️ Switch
+          </button>
+
+          <button
+            type="button"
+            class="filter-button filter-button-platform"
             data-category="ps4"
           >
-            PS4
+            🎮 PS4
           </button>
 
           <button
             type="button"
-            class="filter-button"
+            class="filter-button filter-button-platform"
             data-category="ps5"
           >
-            PS5
+            🎮 PS5
           </button>
 
         </div>
@@ -163,27 +179,40 @@
           <p>Probá con otro nombre o categoría.</p>
         </div>
 
+        <div
+          class="platform-coming"
+          id="platformComing"
+          hidden
+        >
+          <!-- Se completa dinámicamente según la plataforma elegida -->
+        </div>
+
       </div>
     </section>
 
 
-    <!-- OFERTAS -->
+    <!-- OFERTAS Y COMBOS -->
     <section class="offers-section" id="ofertas">
       <div class="container">
 
-        <div class="offer-card">
+        <div class="section-heading">
           <div>
-            <span class="section-label">OFERTAS</span>
+            <span class="section-label">OFERTAS Y COMBOS</span>
             <h2>Armá tu colección</h2>
-            <p>
-              Aprovechá nuestras promociones y encontrá
-              tus próximos juegos favoritos.
-            </p>
           </div>
+        </div>
 
-          <a href="#juegos" class="secondary-button">
-            Explorar juegos
-          </a>
+        <p class="offers-intro">
+          Aprovechá nuestras promociones y encontrá tus próximos juegos favoritos
+          con descuento.
+        </p>
+
+        <div
+          class="products-grid"
+          id="offersGrid"
+          aria-live="polite"
+        >
+          <!-- Los juegos en oferta se cargan automáticamente -->
         </div>
 
       </div>
@@ -283,4 +312,4 @@
   <script src="script.js"></script>
 
 </body>
-</html>
+  </html>
