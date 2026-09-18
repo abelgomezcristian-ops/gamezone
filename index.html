@@ -8,16 +8,16 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-<header class="header"><div class="container header-content"><a class="logo">🎮 Game<span>Zone</span></a><button class="cart-button" id="cartButton">🛒 <span id="cartCount">0</span></button></div></header>
+<header class="header"><div class="container header-content"><a class="logo">🎮 Game<span>Zone</span></a><button class="cart-button" id="cartButton">🛒 <strong id="cartCount">0</strong></button></div></header>
 
 <section class="console-selector">
   <div class="container">
     <h1>Elegí tu consola</h1>
     <div class="console-bubbles">
-      <button class="console-bubble active" data-filter="ps2"><span class="bubble-bg" style="background:#1a1c2e"></span><span class="bubble-content"><strong>PS2</strong><small>120 JUEGOS</small></span></button>
-      <button class="console-bubble" data-filter="oferta"><span class="bubble-bg" style="background:#3a1010"></span><span class="bubble-content"><strong>🔥 OFERTAS</strong><small>DESCUENTOS</small></span></button>
-      <button class="console-bubble" data-filter="combos"><span class="bubble-bg" style="background:#101a2e"></span><span class="bubble-content"><strong>💰 COMBOS</strong><small>5+1</small></span></button>
-      <button class="console-bubble" data-filter="switch"><span class="bubble-bg" style="background:#1a2e1a"></span><span class="bubble-content"><strong>SWITCH</strong><small>PRONTO</small></span></button>
+      <button class="console-bubble active" data-console="ps2"><span class="bubble-content"><strong>PS2</strong><small>120 JUEGOS</small></span></button>
+      <button class="console-bubble" data-console="ps4"><span class="bubble-content"><strong>PS4</strong><small>CATÁLOGO</small></span></button>
+      <button class="console-bubble" data-console="ps5"><span class="bubble-content"><strong>PS5</strong><small>CATÁLOGO</small></span></button>
+      <button class="console-bubble" data-console="switch"><span class="bubble-content"><strong>SWITCH</strong><small>PRÓXIMAMENTE</small></span></button>
     </div>
   </div>
 </section>
@@ -25,16 +25,11 @@
 <section class="products-section" id="juegos">
   <div class="container">
     <div class="section-heading">
-      <div><span class="section-label" id="catalogLabel">CATÁLOGO PS2</span><h2 id="catalogTitle">Todos los juegos</h2></div>
-      <div class="search-box"><input type="search" id="searchInput" placeholder="Buscar solo en PS2..."><button id="searchButton">🔍</button></div>
-    </div>
-    <div class="filters">
-      <button class="filter-button active" data-category="ps2">Todos</button>
-      <button class="filter-button" data-category="destacado">⭐ Destacados</button>
-      <button class="filter-button" data-category="oferta">🔥 Ofertas</button>
+      <div><span class="section-label" id="catalogLabel">CATÁLOGO PS2</span><h2 id="catalogTitle">Juegos PS2</h2></div>
+      <div class="search-box"><input type="search" id="searchInput" placeholder="Buscar en PS2..."><button id="searchButton">🔍</button></div>
     </div>
     <div class="products-grid" id="productsGrid"></div>
-    <div class="empty-state" id="emptyState" hidden>No hay juegos</div>
+    <div class="platform-coming" id="platformComing" hidden></div>
     <div class="pagination" id="pagination"></div>
   </div>
 </section>
