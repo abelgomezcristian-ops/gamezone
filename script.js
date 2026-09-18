@@ -2,10 +2,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // =========================================================
-  // GAMEZONE — CATÁLOGO COMPLETO
-  // =========================================================
-
   const games = [
     {id:1,name:"Grand Theft Auto: San Andreas",category:"destacado",price:2500,genre:"Mundo Abierto",top:true,image:"img/gta-san-andreas.jpg"},
     {id:2,name:"God of War",category:"destacado",price:2500,genre:"Hack and Slash",top:true,image:"img/god-of-war.jpg"},
@@ -42,12 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
     {id:33,name:"Jak 3",category:"destacado",price:2500,genre:"Plataformas Acción",top:false,image:"img/jak-3.jpg"},
     {id:34,name:"Devil May Cry",category:"destacado",price:2500,genre:"Hack and Slash",top:false,image:"img/devil-may-cry-1.jpg"},
     {id:35,name:"Silent Hill 3",category:"destacado",price:2500,genre:"Survival Horror",top:false,image:"img/silent-hill-3.jpg"},
-
     {id:36,name:"Grand Theft Auto III",category:"oferta",price:2500,offerPrice:2000,discount:20,genre:"Mundo Abierto",top:true,image:"img/gta-3.jpg"},
     {id:37,name:"Bully",category:"oferta",price:2500,offerPrice:2000,discount:20,genre:"Mundo Abierto",top:true,image:"img/bully.jpg"},
     {id:38,name:"Marvel vs. Capcom 2: New Age of Heroes",category:"oferta",price:2500,offerPrice:2000,discount:20,genre:"Lucha",top:true,image:"img/marvel-vs-capcom-2.jpg"},
     {id:39,name:"SoulCalibur III",category:"oferta",price:2500,offerPrice:2000,discount:20,genre:"Lucha",top:false,image:"img/soulcalibur-3.jpg"},
-
     {id:40,name:"Need for Speed: Most Wanted",category:"normal",price:2000,genre:"Carreras",top:true,image:"img/nfs-most-wanted.jpg"},
     {id:41,name:"Need for Speed: Underground 2",category:"normal",price:2000,genre:"Carreras",top:true,image:"img/nfs-underground-2.jpg"},
     {id:42,name:"Need for Speed: Underground",category:"normal",price:2000,genre:"Carreras",top:false,image:"img/nfs-underground-1.jpg"},
@@ -82,12 +76,10 @@ document.addEventListener("DOMContentLoaded", () => {
     {id:71,name:"Killzone",category:"normal",price:2000,genre:"Shooter",top:false,image:"img/killzone.jpg"},
     {id:72,name:"SOCOM II: U.S. Navy SEALs",category:"normal",price:2000,genre:"Shooter Táctico",top:false,image:"img/socom-2.jpg"},
     {id:73,name:"Sniper Elite",category:"normal",price:2000,genre:"Shooter Sigilo",top:false,image:"img/sniper-elite.jpg"},
-
     {id:74,name:"Prince of Persia: The Sands of Time",category:"oferta",price:2000,offerPrice:1500,discount:25,genre:"Aventura",top:true,image:"img/pop-sands-of-time.jpg"},
     {id:75,name:"Prince of Persia: Warrior Within",category:"normal",price:2000,genre:"Aventura Acción",top:false,image:"img/pop-warrior-within.jpg"},
     {id:76,name:"Prince of Persia: The Two Thrones",category:"normal",price:2000,genre:"Aventura",top:false,image:"img/pop-two-thrones.jpg"},
     {id:77,name:"Beyond Good & Evil",category:"oferta",price:2000,offerPrice:1500,discount:25,genre:"Aventura",top:false,image:"img/beyond-good-and-evil.jpg"},
-
     {id:78,name:"Psychonauts",category:"normal",price:2000,genre:"Plataformas",top:false},
     {id:79,name:"Katamari Damacy",category:"normal",price:2000,genre:"Puzzle",top:false},
     {id:80,name:"Viewtiful Joe",category:"normal",price:2000,genre:"Beat em Up",top:false},
@@ -101,7 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
     {id:88,name:"Metal Slug Anthology",category:"normal",price:2000,genre:"Arcade",top:false},
     {id:89,name:"Contra: Shattered Soldier",category:"normal",price:2000,genre:"Run and Gun",top:false},
     {id:90,name:"Gradius V",category:"normal",price:2000,genre:"Naves",top:false},
-
     {id:91,name:"Resident Evil: Code Veronica X",category:"normal",price:2000,genre:"Survival Horror",top:false},
     {id:92,name:"Fatal Frame II: Crimson Butterfly",category:"normal",price:2000,genre:"Survival Horror",top:false},
     {id:93,name:"Onimusha 3: Demon Siege",category:"normal",price:2000,genre:"Acción Aventura",top:false},
@@ -112,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
     {id:98,name:"Baldur's Gate: Dark Alliance",category:"oferta",price:2000,offerPrice:1500,discount:25,genre:"RPG Acción",top:false},
     {id:99,name:"Kingdom Hearts: Re Chain of Memories",category:"normal",price:2000,genre:"RPG",top:false},
     {id:100,name:"Lego Star Wars II: The Original Trilogy",category:"normal",price:2000,genre:"Aventura Plataformas",top:true},
-
     {id:101,name:"Spider-Man 2",category:"oferta",price:2000,offerPrice:1500,discount:25,genre:"Acción Mundo Abierto",top:true},
     {id:102,name:"Hulk: Ultimate Destruction",category:"normal",price:2000,genre:"Acción",top:false},
     {id:103,name:"Ben 10: Protector of Earth",category:"normal",price:2000,genre:"Aventura",top:false},
@@ -135,30 +125,11 @@ document.addEventListener("DOMContentLoaded", () => {
     {id:120,name:"007: Nightfire",category:"normal",price:2000,genre:"Shooter",top:false}
   ];
 
-
-  // =========================================================
-  // PLATAFORMAS PRÓXIMAMENTE
-  // =========================================================
-
   const platformInfo = {
-    switch: {
-      icon: "🕹️",
-      name: "Nintendo Switch"
-    },
-    ps4: {
-      icon: "🎮",
-      name: "PlayStation 4"
-    },
-    ps5: {
-      icon: "🎮",
-      name: "PlayStation 5"
-    }
+    switch: { icon: "🕹️", name: "Nintendo Switch" },
+    ps4: { icon: "🎮", name: "PlayStation 4" },
+    ps5: { icon: "🎮", name: "PlayStation 5" }
   };
-
-
-  // =========================================================
-  // ELEMENTOS
-  // =========================================================
 
   const productsGrid = document.getElementById("productsGrid");
   const emptyState = document.getElementById("emptyState");
@@ -167,7 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("searchInput");
   const searchButton = document.getElementById("searchButton");
   const filterButtons = document.querySelectorAll(".filter-button");
-
   const cartButton = document.getElementById("cartButton");
   const cartPanel = document.getElementById("cartPanel");
   const closeCartButton = document.getElementById("closeCartButton");
@@ -179,146 +149,165 @@ document.addEventListener("DOMContentLoaded", () => {
   const checkoutButton = document.getElementById("checkoutButton");
   const currentYear = document.getElementById("currentYear");
 
-
-  // =========================================================
-  // ESTADO
-  // =========================================================
-
-  // PS2 queda seleccionado al iniciar, pero puede cambiarse.
   let currentCategory = "ps2";
   let currentSearch = "";
   let cart = [];
 
-
-  // =========================================================
-  // FORMATO DE PRECIO
-  // =========================================================
-
-  function formatPrice(price) {
-    return "$" + Number(price).toLocaleString("es-AR");
-  }
-
-
-  // =========================================================
-  // ESCAPAR TEXTO
-  // Evita problemas si un nombre contiene caracteres especiales.
-  // =========================================================
-
+  function formatPrice(price) { return "$" + Number(price).toLocaleString("es-AR"); }
   function escapeHTML(text) {
-    return String(text)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
+    return String(text).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
   }
-
-
-  // =========================================================
-  // TARJETA DE PRODUCTO
-  // =========================================================
 
   function createProductCard(game) {
-
     const finalPrice = game.offerPrice || game.price;
-
     let badges = "";
-
-    if (game.category === "oferta") {
-      badges += `
-        <span class="product-badge offer-badge">
-          🔥 OFERTA ${game.discount}% OFF
-        </span>
-      `;
-    }
-
-    if (game.category === "destacado") {
-      badges += `
-        <span class="product-badge featured-badge">
-          ⭐ DESTACADO
-        </span>
-      `;
-    }
-
-    if (game.top) {
-      badges += `
-        <span class="product-badge top-badge">
-          🏆 TOP
-        </span>
-      `;
-    }
-
+    if (game.category === "oferta") badges += `<span class="product-badge offer-badge">🔥 OFERTA ${game.discount || ''}% OFF</span>`;
+    if (game.category === "destacado") badges += `<span class="product-badge featured-badge">⭐ DESTACADO</span>`;
+    if (game.top) badges += `<span class="product-badge top-badge">🏆 TOP</span>`;
+    
     const priceHTML = game.offerPrice
-      ? `
-        <div class="product-price">
-          <span class="old-price">${formatPrice(game.price)}</span>
-          <strong>${formatPrice(game.offerPrice)}</strong>
-        </div>
-      `
-      : `
-        <div class="product-price">
-          <strong>${formatPrice(game.price)}</strong>
-        </div>
-      `;
+      ? `<div class="product-price"><span class="old-price">${formatPrice(game.price)}</span><strong>${formatPrice(game.offerPrice)}</strong></div>`
+      : `<div class="product-price"><strong>${formatPrice(game.price)}</strong></div>`;
 
     const imageHTML = game.image
-      ? `
-        <img
-          src="${game.image}"
-          alt="${escapeHTML(game.name)}"
-          class="product-cover"
-          loading="lazy"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-        >
-        <div class="product-placeholder" style="display:none;">
-          <span>🎮</span>
-          <small>PS2</small>
-        </div>
-      `
-      : `
-        <div class="product-placeholder">
-          <span>🎮</span>
-          <small>PS2</small>
-        </div>
-      `;
+      ? `<img src="${game.image}" alt="${escapeHTML(game.name)}" class="product-cover" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="product-placeholder" style="display:none;"><span>🎮</span><small>PS2</small></div>`
+      : `<div class="product-placeholder"><span>🎮</span><small>PS2</small></div>`;
 
-    return `
-      <article class="product-card">
+    return `<article class="product-card"><div class="product-image"><div class="product-badges">${badges}</div>${imageHTML}</div><div class="product-info"><span class="product-genre">${escapeHTML(game.genre||'PS2')}</span><h3 class="product-title">${escapeHTML(game.name)}</h3><div class="product-bottom">${priceHTML}<button type="button" class="add-cart-button" data-id="${game.id}">🛒 Agregar</button></div></div></article>`;
+  }
 
-        <div class="product-image">
+  // --- LOGICA CORREGIDA ---
+  function getFilteredGames() {
+    let filtered = games;
 
-          <div class="product-badges">
-            ${badges}
-          </div>
+    // PS2 = muestra TODO (porque todos son de PS2)
+    if (currentCategory === "ps2") {
+      filtered = games;
+    } else if (currentCategory === "destacado") {
+      filtered = games.filter(g => g.category === "destacado");
+    } else if (currentCategory === "oferta") {
+      filtered = games.filter(g => g.category === "oferta");
+    } else if (["switch","ps4","ps5"].includes(currentCategory)) {
+      return []; // se maneja como proximamente
+    }
 
-          ${imageHTML}
+    if (currentSearch) {
+      const q = currentSearch.toLowerCase();
+      filtered = filtered.filter(g => 
+        g.name.toLowerCase().includes(q) ||
+        (g.genre && g.genre.toLowerCase().includes(q)) ||
+        g.category.toLowerCase().includes(q)
+      );
+    }
+    return filtered;
+  }
 
-        </div>
+  function renderProducts() {
+    const filtered = getFilteredGames();
 
-        <div class="product-info">
+    if (["switch","ps4","ps5"].includes(currentCategory)) {
+      const info = platformInfo[currentCategory];
+      productsGrid.innerHTML = "";
+      emptyState.hidden = true;
+      platformComing.hidden = false;
+      platformComing.innerHTML = `<div class="coming-card"><div style="font-size:50px">${info.icon}</div><h3>${info.name} — Próximamente</h3><p>Estamos cargando el catálogo de ${info.name}. ¡Volvé pronto!</p><button class="secondary-button" onclick="document.querySelector('[data-category=ps2]').click()">Volver a PS2</button></div>`;
+      return;
+    }
 
-          <span class="product-genre">
-            ${escapeHTML(game.genre)}
-          </span>
+    platformComing.hidden = true;
 
-          <h3 class="product-title">
-            ${escapeHTML(game.name)}
-          </h3>
+    if (filtered.length === 0) {
+      productsGrid.innerHTML = "";
+      emptyState.hidden = false;
+      return;
+    }
 
-          <div class="product-bottom">
+    emptyState.hidden = true;
+    productsGrid.innerHTML = filtered.map(createProductCard).join("");
+  }
 
-            ${priceHTML}
+  function renderOffers() {
+    const ofertas = games.filter(g => g.category === "oferta");
+    if (offersGrid) offersGrid.innerHTML = ofertas.map(createProductCard).join("");
+  }
 
-            <button
-              type="button"
-              class="add-cart-button"
-              data-id="${game.id}"
-            >
-              🛒 Agregar
-            </button>
+  function updateCartUI() {
+    cartCount.textContent = cart.reduce((a,b)=>a+b.qty,0);
+    cartItems.innerHTML = cart.map(item => {
+      const game = games.find(g=>g.id===item.id);
+      return `<div class="cart-item"><span>${escapeHTML(game.name)}</span><div><button data-dec="${item.id}">-</button> ${item.qty} <button data-inc="${item.id}">+</button> <button data-del="${item.id}">x</button></div></div>`;
+    }).join("");
+    const total = cart.reduce((sum,i)=>{
+      const g=games.find(x=>x.id===i.id);
+      return sum + (g.offerPrice||g.price)*i.qty;
+    },0);
+    cartTotal.textContent = formatPrice(total);
+    cartEmpty.style.display = cart.length ? "none" : "block";
+  }
 
-          </div>
+  function addToCart(id) {
+    const exist = cart.find(c=>c.id===id);
+    if (exist) exist.qty++;
+    else cart.push({id,qty:1});
+    updateCartUI();
+  }
 
-        </div>
+  // EVENTOS
+  filterButtons.forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      filterButtons.forEach(b=>b.classList.remove("active"));
+      btn.classList.add("active");
+      currentCategory = btn.dataset.category;
+      renderProducts();
+    });
+  });
 
-      </article>
+  searchInput.addEventListener("input",(e)=>{
+    currentSearch = e.target.value.trim();
+    renderProducts();
+  });
+  searchButton.addEventListener("click",()=>{
+    currentSearch = searchInput.value.trim();
+    renderProducts();
+  });
+
+  productsGrid.addEventListener("click",(e)=>{
+    const btn = e.target.closest(".add-cart-button");
+    if (btn) addToCart(Number(btn.dataset.id));
+  });
+  offersGrid.addEventListener("click",(e)=>{
+    const btn = e.target.closest(".add-cart-button");
+    if (btn) addToCart(Number(btn.dataset.id));
+  });
+
+  cartItems.addEventListener("click",(e)=>{
+    if (e.target.dataset.inc) addToCart(Number(e.target.dataset.inc));
+    if (e.target.dataset.dec) {
+      const item = cart.find(c=>c.id==e.target.dataset.dec);
+      if (item) { item.qty--; if (item.qty<=0) cart=cart.filter(c=>c.id!=item.id); }
+      updateCartUI();
+    }
+    if (e.target.dataset.del) { cart=cart.filter(c=>c.id!=e.target.dataset.del); updateCartUI(); }
+  });
+
+  cartButton.addEventListener("click",()=>{ cartPanel.classList.add("open"); overlay.hidden=false; });
+  closeCartButton.addEventListener("click",()=>{ cartPanel.classList.remove("open"); overlay.hidden=true; });
+  overlay.addEventListener("click",()=>{ cartPanel.classList.remove("open"); overlay.hidden=true; });
+
+  checkoutButton.addEventListener("click",()=>{
+    if (!cart.length) return;
+    let msg = "Hola GameZone! Quiero pedir:\n";
+    cart.forEach(i=>{
+      const g=games.find(x=>x.id===i.id);
+      msg+=`- ${g.name} x${i.qty} = ${formatPrice((g.offerPrice||g.price)*i.qty)}\n`;
+    });
+    msg+=`Total: ${cartTotal.textContent}`;
+    window.open("https://wa.me/5490000000000?text="+encodeURIComponent(msg), "_blank");
+  });
+
+  if (currentYear) currentYear.textContent = new Date().getFullYear();
+
+  renderProducts();
+  renderOffers();
+  updateCartUI();
+});
