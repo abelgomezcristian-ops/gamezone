@@ -3,445 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="description" content="GameZone - Tienda de videojuegos">
+  <meta name="description" content="GameZone Corrientes - Tienda de videojuegos PS2">
   <meta name="theme-color" content="#0b0b0f">
-
-  <title>GameZone | Tienda de videojuegos</title>
-
+  <title>GameZone | Tienda de videojuegos Corrientes</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
-
 <body>
-
-  <!-- ENCABEZADO -->
   <header class="header">
     <div class="container header-content">
-
-      <a href="#inicio" class="logo" aria-label="GameZone inicio">
-        <span class="logo-icon">🎮</span>
-        <span>Game<span>Zone</span></span>
-      </a>
-
-      <nav class="nav" aria-label="Navegación principal">
-        <a href="#inicio">Inicio</a>
-        <a href="#juegos">Juegos</a>
-        <a href="#ofertas">Ofertas</a>
-        <a href="#combos">Combos</a>
-      </nav>
-
-      <button
-        type="button"
-        class="cart-button"
-        id="cartButton"
-        aria-label="Abrir carrito"
-      >
-        🛒
-        <span>Carrito</span>
-        <strong id="cartCount">0</strong>
-      </button>
-
+      <a href="#inicio" class="logo"><span class="logo-icon">🎮</span><span>Game<span>Zone</span></span></a>
+      <nav class="nav"><a href="#inicio">Inicio</a><a href="#juegos">Juegos</a><a href="#ofertas">Ofertas</a><a href="#combos">Combos</a></nav>
+      <button type="button" class="cart-button" id="cartButton">🛒<span>Consulta</span><strong id="cartCount">0</strong></button>
     </div>
   </header>
 
-
-  <!-- CONTENIDO PRINCIPAL -->
   <main>
-
-    <!-- HERO PRINCIPAL -->
     <section class="hero" id="inicio">
-
-      <div class="hero-background">
-        <div class="floating-cover cover-one">🎮</div>
-        <div class="floating-cover cover-two">🕹️</div>
-        <div class="floating-cover cover-three">👾</div>
-        <div class="floating-cover cover-four">⭐</div>
-        <div class="hero-glow"></div>
-      </div>
-
       <div class="container hero-content">
-
-        <div class="hero-text">
-          <span class="hero-badge">🎮 GAMEZONE · VIDEOJUEGOS</span>
-
-          <h1>
-            Encontrá tu próximo
-            <span>juego favorito.</span>
-          </h1>
-
-          <p>
-            Explorá nuestro catálogo de videojuegos,
-            encontrá las mejores ofertas y armá tu colección.
-          </p>
-
+        <div class="hero-text" data-aos="fade-up">
+          <span class="hero-badge">🎮 GAMEZONE · CORRIENTES</span>
+          <h1>Encontrá tu próximo <span>juego favorito.</span></h1>
+          <p>Catálogo PS2 completo, combos y ofertas. Consultá stock y precio por WhatsApp.</p>
           <div class="hero-buttons">
-            <a href="#juegos" class="primary-button">
-              Ver juegos 🎮
-            </a>
-
-            <a href="#ofertas" class="secondary-button">
-              Ver ofertas
-            </a>
+            <a href="#juegos" class="primary-button">Ver juegos 🎮</a>
+            <a href="#ofertas" class="secondary-button">Ver ofertas</a>
           </div>
         </div>
-
-        <div class="hero-visual" aria-hidden="true">
-          <div class="console-showcase">
-            <div class="console-light"></div>
-            <div class="console-shape">
-              <span class="console-logo">GAMEZONE</span>
-              <span class="console-detail"></span>
-            </div>
-            <div class="controller controller-left">🎮</div>
-            <div class="controller controller-right">🕹️</div>
-          </div>
+        <div class="hero-visual" data-aos="zoom-in" data-aos-delay="200">
+          <!-- Si tenes video, pone tu mp4 en video/trailer.mp4 -->
+          <video autoplay muted loop playsinline poster="img/gta-san-andreas.jpg">
+            <source src="video/trailer.mp4" type="video/mp4">
+          </video>
+          <div class="video-overlay">GAMEZONE<br><small>PS2 COLLECTION</small></div>
         </div>
-
       </div>
     </section>
 
-
-    <!-- BARRA DE INFORMACIÓN -->
     <section class="benefits-section">
       <div class="container benefits-grid">
-
-        <div class="benefit-item">
-          <span class="benefit-icon">🎮</span>
-          <div>
-            <strong>Catálogo variado</strong>
-            <p>Juegos para distintas consolas</p>
-          </div>
-        </div>
-
-        <div class="benefit-item">
-          <span class="benefit-icon">🔥</span>
-          <div>
-            <strong>Ofertas especiales</strong>
-            <p>Precios promocionales</p>
-          </div>
-        </div>
-
-        <div class="benefit-item">
-          <span class="benefit-icon">💬</span>
-          <div>
-            <strong>Atención por WhatsApp</strong>
-            <p>Consultá antes de comprar</p>
-          </div>
-        </div>
-
+        <div class="benefit-item" data-aos="fade-up"><span class="benefit-icon">🎮</span><div><strong>120 Juegos PS2</strong><p>Catálogo completo</p></div></div>
+        <div class="benefit-item" data-aos="fade-up" data-aos-delay="100"><span class="benefit-icon">🔥</span><div><strong>Combos</strong><p>Mejor precio llevando varios</p></div></div>
+        <div class="benefit-item" data-aos="fade-up" data-aos-delay="200"><span class="benefit-icon">💬</span><div><strong>Consulta por WhatsApp</strong><p>Te respondemos al toque</p></div></div>
       </div>
     </section>
 
-
-    <!-- JUEGOS -->
     <section class="products-section" id="juegos">
       <div class="container">
-
         <div class="section-heading">
-          <div>
-            <span class="section-label">CATÁLOGO</span>
-            <h2>Juegos disponibles</h2>
-            <p class="section-description">
-              Elegí una categoría y encontrá tu próximo juego.
-            </p>
-          </div>
-
-          <div class="search-box">
-            <label for="searchInput" class="sr-only">
-              Buscar juegos
-            </label>
-
-            <input
-              type="search"
-              id="searchInput"
-              placeholder="Buscar un juego..."
-              autocomplete="off"
-            >
-
-            <button
-              type="button"
-              id="searchButton"
-              aria-label="Buscar"
-            >
-              🔍
-            </button>
-          </div>
+          <div><span class="section-label">CATÁLOGO</span><h2>Juegos disponibles</h2><p class="section-description">Tocá en Consultar y te pasamos precio al instante.</p></div>
+          <div class="search-box"><input type="search" id="searchInput" placeholder="Buscar un juego..." autocomplete="off"><button type="button" id="searchButton">🔍</button></div>
         </div>
-
-
-        <!-- FILTROS -->
-        <div class="filters" aria-label="Filtros de juegos">
-
-          <button
-            type="button"
-            class="filter-button active"
-            data-category="ps2"
-          >
-            🎮 PS2
-          </button>
-
-          <button
-            type="button"
-            class="filter-button"
-            data-category="destacado"
-          >
-            ⭐ Destacados
-          </button>
-
-          <button
-            type="button"
-            class="filter-button"
-            data-category="oferta"
-          >
-            🔥 Ofertas
-          </button>
-
-          <button
-            type="button"
-            class="filter-button filter-button-platform"
-            data-category="switch"
-          >
-            🕹️ Switch
-          </button>
-
-          <button
-            type="button"
-            class="filter-button filter-button-platform"
-            data-category="ps4"
-          >
-            🎮 PS4
-          </button>
-
-          <button
-            type="button"
-            class="filter-button filter-button-platform"
-            data-category="ps5"
-          >
-            🎮 PS5
-          </button>
-
+        <div class="filters">
+          <button type="button" class="filter-button active" data-category="ps2">🎮 Todos PS2</button>
+          <button type="button" class="filter-button" data-category="destacado">⭐ Destacados</button>
+          <button type="button" class="filter-button" data-category="oferta">🔥 Ofertas</button>
+          <button type="button" class="filter-button filter-button-platform" data-category="switch">🕹️ Switch</button>
+          <button type="button" class="filter-button filter-button-platform" data-category="ps4">🎮 PS4</button>
+          <button type="button" class="filter-button filter-button-platform" data-category="ps5">🎮 PS5</button>
         </div>
-
-
-        <!-- PRODUCTOS -->
-        <div
-          class="products-grid"
-          id="productsGrid"
-          aria-live="polite"
-        >
-          <!-- Los productos se cargarán automáticamente -->
-        </div>
-
-        <div
-          class="empty-state"
-          id="emptyState"
-          hidden
-        >
-          <div>🎮</div>
-          <h3>No encontramos juegos</h3>
-          <p>Probá con otro nombre o categoría.</p>
-        </div>
-
-        <div
-          class="platform-coming"
-          id="platformComing"
-          hidden
-        >
-          <!-- Se completa dinámicamente según la plataforma elegida -->
-        </div>
-
+        <div class="products-grid" id="productsGrid"></div>
+        <div class="empty-state" id="emptyState" hidden><div>🎮</div><h3>No encontramos juegos</h3><p>Probá con otro nombre.</p></div>
+        <div class="platform-coming" id="platformComing" hidden></div>
       </div>
     </section>
 
-
-    <!-- OFERTAS -->
     <section class="offers-section" id="ofertas">
       <div class="container">
-
-        <div class="section-heading">
-          <div>
-            <span class="section-label">PROMOCIONES</span>
-            <h2>Juegos con descuento 🔥</h2>
-            <p class="section-description">
-              Aprovechá estos juegos con precios especiales.
-            </p>
-          </div>
-        </div>
-
-        <div
-          class="products-grid"
-          id="offersGrid"
-          aria-live="polite"
-        >
-          <!-- Los juegos en oferta se cargan automáticamente -->
-        </div>
-
+        <div class="section-heading"><div><span class="section-label">PROMOCIONES</span><h2>Combos y ofertas 🔥</h2></div></div>
+        <div class="products-grid" id="offersGrid"></div>
       </div>
     </section>
 
-
-    <!-- COMBOS -->
     <section class="combos-section" id="combos">
       <div class="container">
-
-        <div class="section-heading">
-          <div>
-            <span class="section-label">COMBOS</span>
-            <h2>Armá tu colección 💰</h2>
-            <p class="section-description">
-              Combiná juegos y consultá por precios especiales.
-            </p>
-          </div>
-        </div>
-
+        <div class="section-heading"><div><span class="section-label">COMBOS</span><h2>Armá tu colección 💰</h2><p class="section-description">Llevando 3 o más tenés mejor precio. Consultá.</p></div></div>
         <div class="combos-grid">
-
-          <article class="combo-card">
-            <div class="combo-icon">🎮</div>
-            <div class="combo-content">
-              <span class="combo-label">COMBO PS2</span>
-              <h3>Armá tu selección</h3>
-              <p>
-                Elegí varios juegos de PS2 y consultá por un precio especial.
-              </p>
-              <a href="#juegos" class="combo-button">
-                Ver juegos
-              </a>
-            </div>
-          </article>
-
-          <article class="combo-card combo-card-special">
-            <div class="combo-icon">🔥</div>
-            <div class="combo-content">
-              <span class="combo-label">PROMOCIONES</span>
-              <h3>Juegos en oferta</h3>
-              <p>
-                Encontrá títulos destacados con precios rebajados.
-              </p>
-              <a href="#ofertas" class="combo-button">
-                Ver ofertas
-              </a>
-            </div>
-          </article>
-
+          <article class="combo-card" data-aos="fade-up"><div class="combo-icon">🎮</div><div class="combo-content"><span class="combo-label">COMBO PS2</span><h3>3 juegos</h3><p>Armá tu selección y consultá precio final por WhatsApp.</p><a href="#juegos" class="combo-button">Ver juegos</a></div></article>
+          <article class="combo-card combo-card-special" data-aos="fade-up" data-aos-delay="100"><div class="combo-icon">🔥</div><div class="combo-content"><span class="combo-label">5 JUEGOS + 1 GRATIS</span><h3>Combo coleccionista</h3><p>La promo que más sale. Consultá stock.</p><a href="https://wa.me/TU_NUMERO_AQUI?text=Hola%20GameZone!%20Quiero%20el%20combo%205+1" target="_blank" class="combo-button">Consultar combo</a></div></article>
         </div>
-
       </div>
     </section>
-
   </main>
 
-
-  <!-- CARRITO -->
-  <aside
-    class="cart-panel"
-    id="cartPanel"
-    aria-hidden="true"
-  >
-
-    <div class="cart-header">
-      <div>
-        <span class="section-label">TU COMPRA</span>
-        <h2>Carrito</h2>
-      </div>
-
-      <button
-        type="button"
-        id="closeCartButton"
-        class="close-button"
-        aria-label="Cerrar carrito"
-      >
-        ×
-      </button>
-    </div>
-
-
-    <div
-      class="cart-items"
-      id="cartItems"
-    >
-      <!-- Productos del carrito -->
-    </div>
-
-
-    <div class="cart-empty" id="cartEmpty">
-      <div>🛒</div>
-      <p>Tu carrito está vacío.</p>
-    </div>
-
-
-    <div class="cart-footer">
-
-      <div class="cart-total">
-        <span>Total estimado</span>
-        <strong id="cartTotal">$0</strong>
-      </div>
-
-      <button
-        type="button"
-        id="checkoutButton"
-        class="checkout-button"
-      >
-        Consultar pedido por WhatsApp
-      </button>
-
-    </div>
-
+  <aside class="cart-panel" id="cartPanel" aria-hidden="true">
+    <div class="cart-header"><div><span class="section-label">TU CONSULTA</span><h2>Lista</h2></div><button type="button" id="closeCartButton" class="close-button">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-empty" id="cartEmpty"><div>🛒</div><p>Tu lista está vacía. Agregá juegos para consultar.</p></div>
+    <div class="cart-footer"><div class="cart-total"><span>Juegos seleccionados</span><strong id="cartTotal">0</strong></div><button type="button" id="checkoutButton" class="checkout-button">Consultar por WhatsApp</button></div>
   </aside>
+  <div class="overlay" id="overlay" hidden></div>
 
+  <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-brand"><strong>🎮 GameZone</strong><p>Corrientes - Envíos a todo el país</p></div><p class="footer-copy">© <span id="currentYear"></span> GameZone</p></div></div></footer>
 
-  <!-- FONDO DEL CARRITO -->
-  <div
-    class="overlay"
-    id="overlay"
-    hidden
-  ></div>
+  <a href="https://wa.me/TU_NUMERO_AQUI?text=Hola%20GameZone!" class="whatsapp-float" target="_blank">💬</a>
 
-
-  <!-- MODAL DE DETALLES -->
-  <div
-    class="details-modal"
-    id="detailsModal"
-    hidden
-    role="dialog"
-    aria-modal="true"
-    aria-label="Detalles del juego"
-  >
-    <div class="details-modal-content">
-      <!-- Se completa desde script.js -->
-    </div>
-  </div>
-
-
-  <!-- PIE DE PÁGINA -->
-  <footer class="footer">
-    <div class="container">
-
-      <div class="footer-content">
-
-        <div class="footer-brand">
-          <strong>🎮 GameZone</strong>
-          <p>Tu tienda de videojuegos.</p>
-        </div>
-
-        <div class="footer-links">
-          <a href="#inicio">Inicio</a>
-          <a href="#juegos">Juegos</a>
-          <a href="#ofertas">Ofertas</a>
-        </div>
-
-        <p class="footer-copy">
-          © <span id="currentYear"></span> GameZone
-        </p>
-
-      </div>
-
-    </div>
-  </footer>
-
-
-  <!-- JAVASCRIPT -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({duration:800, once:true});</script>
   <script src="script.js"></script>
-
 </body>
 </html>
