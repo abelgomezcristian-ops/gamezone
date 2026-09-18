@@ -1,75 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GameZone Corrientes</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GameZone Corrientes</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-  <header class="header">
-    <div class="container header-content">
-      <a href="#" class="logo">🎮 Game<span>Zone</span></a>
-      <button class="cart-button" id="cartButton">🛒 Lista <strong id="cartCount">0</strong></button>
+<header class="header"><div class="container header-content"><a class="logo">🎮 Game<span>Zone</span></a><button class="cart-button" id="cartButton">🛒 <span id="cartCount">0</span></button></div></header>
+
+<section class="console-selector">
+  <div class="container">
+    <h1>Elegí tu consola</h1>
+    <div class="console-bubbles">
+      <button class="console-bubble active" data-filter="ps2"><span class="bubble-bg" style="background:#1a1c2e"></span><span class="bubble-content"><strong>PS2</strong><small>120 JUEGOS</small></span></button>
+      <button class="console-bubble" data-filter="oferta"><span class="bubble-bg" style="background:#3a1010"></span><span class="bubble-content"><strong>🔥 OFERTAS</strong><small>DESCUENTOS</small></span></button>
+      <button class="console-bubble" data-filter="combos"><span class="bubble-bg" style="background:#101a2e"></span><span class="bubble-content"><strong>💰 COMBOS</strong><small>5+1</small></span></button>
+      <button class="console-bubble" data-filter="switch"><span class="bubble-bg" style="background:#1a2e1a"></span><span class="bubble-content"><strong>SWITCH</strong><small>PRONTO</small></span></button>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- SELECTOR FLOTANTE TIPO ARIKGAMES -->
-  <section class="console-selector" id="consoleSelector">
-    <div class="container">
-      <h1 data-aos="fade-up">Elegí tu consola</h1>
-      <p data-aos="fade-up" data-aos-delay="100">Tocá una bolita para entrar a su catálogo</p>
-      <div class="console-bubbles">
-        <button class="console-bubble bubble-ps2 active" data-console="ps2" data-aos="zoom-in" data-aos-delay="200">
-          <span class="bubble-bg"></span>
-          <span class="bubble-content"><strong>PS2</strong><small>120 juegos</small></span>
-        </button>
-        <button class="console-bubble bubble-ps4" data-console="ps4" data-aos="zoom-in" data-aos-delay="300">
-          <span class="bubble-bg"></span>
-          <span class="bubble-content"><strong>PS4</strong><small>Próximamente</small></span>
-        </button>
-        <button class="console-bubble bubble-switch" data-console="switch" data-aos="zoom-in" data-aos-delay="400">
-          <span class="bubble-bg"></span>
-          <span class="bubble-content"><strong>SWITCH</strong><small>Próximamente</small></span>
-        </button>
-        <button class="console-bubble bubble-ps5" data-console="ps5" data-aos="zoom-in" data-aos-delay="500">
-          <span class="bubble-bg"></span>
-          <span class="bubble-content"><strong>PS5</strong><small>Próximamente</small></span>
-        </button>
-      </div>
+<section class="products-section" id="juegos">
+  <div class="container">
+    <div class="section-heading">
+      <div><span class="section-label" id="catalogLabel">CATÁLOGO PS2</span><h2 id="catalogTitle">Todos los juegos</h2></div>
+      <div class="search-box"><input type="search" id="searchInput" placeholder="Buscar solo en PS2..."><button id="searchButton">🔍</button></div>
     </div>
-  </section>
-
-  <!-- CATALOGO PS2 - SOLO APARECE AL TOCAR PS2 -->
-  <section class="products-section" id="juegos" style="display:none">
-    <div class="container">
-      <div class="section-heading">
-        <div><span class="section-label">CATÁLOGO PS2</span><h2 id="catalogTitle">Juegos PS2</h2><p class="section-description">Buscá solo dentro de PS2</p></div>
-        <div class="search-box"><input type="search" id="searchInput" placeholder="Buscar en PS2..."><button id="searchButton">🔍</button></div>
-      </div>
-      <div class="filters">
-        <button class="filter-button active" data-category="ps2">Todos</button>
-        <button class="filter-button" data-category="destacado">⭐ Destacados</button>
-        <button class="filter-button" data-category="oferta">🔥 Ofertas</button>
-      </div>
-      <div class="products-grid" id="productsGrid"></div>
-      <div class="empty-state" id="emptyState" hidden>🎮 No encontramos nada en PS2</div>
-      <!-- PAGINACIÓN 1-2-3 -->
-      <div class="pagination" id="pagination"></div>
-      <div class="load-more-wrap"><button id="loadMoreBtn" class="secondary-button" style="display:none">Ver más juegos</button></div>
+    <div class="filters">
+      <button class="filter-button active" data-category="ps2">Todos</button>
+      <button class="filter-button" data-category="destacado">⭐ Destacados</button>
+      <button class="filter-button" data-category="oferta">🔥 Ofertas</button>
     </div>
-  </section>
+    <div class="products-grid" id="productsGrid"></div>
+    <div class="empty-state" id="emptyState" hidden>No hay juegos</div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+</section>
 
-  <section class="offers-section" id="ofertas" style="display:none"><div class="container"><h2>🔥 Ofertas PS2</h2><div class="products-grid" id="offersGrid"></div></div></section>
+<aside class="cart-panel" id="cartPanel"><div class="cart-header"><h2>Tu lista</h2><button id="closeCartButton">×</button></div><div id="cartItems"></div><div id="cartEmpty">Vacío</div><div class="cart-footer"><span id="cartTotal">0 juegos</span><button id="checkoutButton" class="checkout-button">Consultar WhatsApp</button></div></aside>
+<div class="overlay" id="overlay" hidden></div>
+<a href="https://wa.me/TU_NUMERO_AQUI" class="whatsapp-float" target="_blank">💬</a>
 
-  <aside class="cart-panel" id="cartPanel"><div class="cart-header"><h2>Tu lista</h2><button id="closeCartButton">×</button></div><div id="cartItems" class="cart-items"></div><div id="cartEmpty" class="cart-empty">Tu lista está vacía</div><div class="cart-footer"><div class="cart-total"><span id="cartTotal">0 juegos</span></div><button id="checkoutButton" class="checkout-button">Consultar por WhatsApp</button></div></aside>
-  <div class="overlay" id="overlay" hidden></div>
-  <a href="https://wa.me/TU_NUMERO_AQUI" class="whatsapp-float" target="_blank">💬</a>
-  <footer class="footer"><div class="container">© <span id="currentYear"></span> GameZone Corrientes</div></footer>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
-  <script src="script.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+<script src="script.js"></script>
 </body>
 </html>
